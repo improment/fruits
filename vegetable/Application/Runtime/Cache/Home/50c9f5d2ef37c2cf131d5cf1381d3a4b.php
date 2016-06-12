@@ -21,15 +21,15 @@
 <!--登录样式-->
   <div class="login">
        <div class="style_login clearfix">
-       <form>
+       <form action="/index.php/Home/Login/login" method="post">
           <div class="layout">
           
             <div class="login_title">登录</div>
-            <div class="item item-fore1"><label for="loginname" class="login-label name-label"></label><input name="" type="text" class="text" placeholder="请输入用户"></div>
-            <div class="item item-fore2"><label for="nloginpwd" class="login-label pwd-label"></label><input name="" type="password" class="text" placeholder="用户密码"> </div>
+            <div class="item item-fore1"><label for="loginname" class="login-label name-label"></label><input name="uphone" type="text" class="text" placeholder="请输入用户"></div>
+            <div class="item item-fore2"><label for="nloginpwd" class="login-label pwd-label"></label><input name="upwd" type="password" class="text" placeholder="用户密码"> </div>
             <div class="auto-login"><label class="auto-label"><input type="checkbox" id="rememberMe"><span>记住账号和密码</span></label></div>
-            <div class="login-btn"><a href="/Public/javascript:;" class="btn_login">登&nbsp;&nbsp;&nbsp;&nbsp;录</a></div>
-            <div class="login_link"><a href="/Public/">免费注册</a> | <a href="/Public/#">忘记密码</a></div>
+            <div class="login-btn"><input type="submit" value="登&nbsp;&nbsp;&nbsp;&nbsp;录" class="btn_login"></div>
+            <div class="login_link"><a href="/index.php/Home/Login/registered">免费注册</a> | <a href="#">忘记密码</a></div>
           </div>
           </form>
        </div>
