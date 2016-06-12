@@ -15,4 +15,8 @@ class ActiveController extends Controller {
 		$this->assign('arr',$arr);
         $this->display('Group_buy');
     }
+	//进入详情页
+	public function product(){
+		$this->display('Product');
+	}
 }
