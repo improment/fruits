@@ -25,7 +25,7 @@
 <!--位置-->
 <div class="Bread_crumbs">
  <div class="Inside_pages clearfix">
-   <div class="left">当前位置：<a href="#">首页</a>&gt;<a href="#">素菜馆</a></div>
+   <div class="left">当前位置：<a href="#">首页</a>&gt;<a href="#">水果馆</a></div>
    <div class="right Search">
    <form>
     <input name="" type="text"  class="Search_Box"/>
@@ -41,38 +41,15 @@
    <div class="ranking">
     <div class="ranking_title"><span>销量</span>排行</div>
     <ul class="ranking_list">
+            <?php foreach($res as $v) {?>
      <li class="">
      <em class="ranking_label">1</em>
-     <a href="#" class="img"> <img src="/Public/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
+     <a href="/Public/#" class="img"> <img src="../../../CI/public/uploads/<?php echo $v['simg']['1']?>" width="100px" height="100px" /></a>
+     <p class="ranking_name"><?php echo $v['sname']?></p>
+     <p class="price"><b>￥</b><?php echo $v['sprice']?></p>
+     <p><a href="/index.php/Home/Xiangqing/index">立即查看 </a></p>
      </li>
-     <li class="">
-     <em class="ranking_label">2</em>
-     <a href="#" class="img"> <img src="/Public/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li><li class="">
-     <em class="ranking_label">3</em>
-     <a href="#" class="img"> <img src="/Public/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li><li class="">
-     <em class="ranking_label">4</em>
-     <a href="#" class="img"> <img src="/Public/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li><li class="">
-     <em class="ranking_label">5</em>
-     <a href="#" class="img"> <img src="/Public/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li>
+     <?php }?>
     </ul>
    </div>
  </div>

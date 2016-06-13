@@ -20,7 +20,7 @@
 <div class="Inside_pages clearfix">
  <div class="register">
      <div class="register_style">
-      <div class="u_register">
+      <div class="u_register"> 
 	  <form action="/index.php/Home/Login/user_add" method="post">
         <ul>
          <li><label class="name">手机号码：</label><input name="uphone" type="text"  class="text_Add" id="uphone"/></li>
