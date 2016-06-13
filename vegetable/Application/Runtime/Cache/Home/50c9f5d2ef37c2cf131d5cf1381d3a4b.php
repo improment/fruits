@@ -10,7 +10,7 @@
 <script type="text/javascript" src="/Public/js/slide.js"></script>
 <script src="/Public/js/common_js.js" type="text/javascript"></script>
 <script src="/Public/js/jquery.foucs.js" type="text/javascript"></script>
-<script src="/Public/http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=402727"></script>
+<script src="/Public/http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=402727"></script> 
 <title>登陆</title>
 </head>
 

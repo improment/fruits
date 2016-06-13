@@ -247,7 +247,7 @@
 .operating a{ background:url("../images/Complex_img.png") no-repeat; display:block; float:left; margin-right:20px;}
 .operating a.buy_btn{ background-position: left -101px; width:132px; height:50px;}
 .operating a.Join_btn{background-position: -132px -101px; width:132px; height:50px;}
-.operating a.Collect_btn{background-position: left -199px; width:132px; height:50px;}
+.operating a.Collect_btn{background-position: left -199px; width:100px; height:50px;}
 .operating a.buy_btn:hover{background-position: left -150px;}
 .operating a.Join_btn:hover{background-position: -132px -150px;}
 .operating a.Collect_btn:hover{background-position: left -248px;}

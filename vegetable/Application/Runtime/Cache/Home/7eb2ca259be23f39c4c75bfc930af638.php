@@ -10,6 +10,7 @@
 <script type="text/javascript" src="/Public/js/slide.js"></script>
 <script src="/Public/js/common_js.js" type="text/javascript"></script>
 <script src="/Public/js/jquery.foucs.js" type="text/javascript"></script>
+
 <!--[if IE 7]>
 <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
 <![endif]-->
@@ -51,11 +52,11 @@
           <li class="Group_price"><span class="Current_price"><i>￥</i><?php echo ($v["a_price"]); ?>.00</span> <span class="Group_List">原价：<?php echo ($v["sprice"]); ?></span></li>
           <li class="Group_p_buy">
            <span class="Group_Number"><em></em><?php echo ($v["people"]); ?>人购买</span>
-           <span class="Group_button right"><a href="/index.php/Home/Active/" class="buy_button"></a></span>
+           <span class="Group_button right"><a href="/index.php/Home/Active/product/id/<?php echo ($v["aid"]); ?>" class="buy_button"></a></span>
           </li>
          </ul>
        </div>
-       <div class="Group_img"><a href=""><img src="/Public/images/pic5.jpg"  height="195" width="365"/></a></div>
+       <div class="Group_img"><a href=""><img src="../../../CI/public/uploads/<?php echo ($v["a_img"]); ?>"  height="195" width="365"/></a></div>
        </div>
        <div class="Group_time">
          <em ></em><div class="timerbg">
@@ -114,7 +115,7 @@
           </li>
          </ul>
         </div>
-        <div class="right_Group_img"><a href=""><img src="/Public/images/pic1.jpg"  height="370" width="365"/></a></div>
+        <div class="right_Group_img"><a href=""><img src="../../../CI/public/uploads/<?php echo ($v["a_img"]); ?>"  height="370" width="365"/></a></div>
        </div>
         <div class="Group_time">
          <em></em><div class="timerbg">
@@ -159,7 +160,7 @@
      <div class="other_Group clearfix">
 	 <?php if(is_array($are2)): foreach($are2 as $key=>$v): ?><div class="g_p_list">
         <div class="g_p_style"> 
-         <div class="g_p_img"><a href="#"><img src="/Public/images/product_img_17.png"  height="220" width="274"/></a></div>
+         <div class="g_p_img"><a href="#"><img src="../../../CI/public/uploads/<?php echo ($v["a_img"]); ?>"  height="220" width="274"/></a></div>
         <ul>
          <a href="#" class="Collect"></a>     
         <li><a href="" class="name"><?php echo ($v["a_name"]); ?></a></li>

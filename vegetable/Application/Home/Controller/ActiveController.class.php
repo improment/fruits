@@ -17,6 +17,11 @@ class ActiveController extends Controller {
     }
 	//进入详情页
 	public function product(){
+		$id=I('get.id');
+		$activity=D('Activity');
+		$arr=$activity->id_sel("aid=$id");
+		//print_r($arr);die;
+		$this->assign($arr);
 		$this->display('Product');
 	}
 }
