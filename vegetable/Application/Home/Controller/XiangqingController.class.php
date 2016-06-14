@@ -13,7 +13,7 @@ class XiangqingController extends Controller {
             $res[$k]['simg']=explode('|',$v['simg']);
             unset($res[$k]['simg'][3]);
         }
-        print_r($arr);
+        
         $this->assign('arr',$arr);
         $this->assign('res',$res);
         $this->display('Product-detailed');

@@ -1,21 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="__PUBLIC__/css/css.css" rel="stylesheet" type="text/css" />
-<link href="__PUBLIC__/css/common.css" rel="stylesheet" type="text/css" />
-<link href="__PUBLIC__/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<script src="__PUBLIC__/js/jquery.min.1.8.2.js" type="text/javascript"></script>
-<script src="__PUBLIC__/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
-<script type="text/javascript" src="__PUBLIC__/js/slider.js"></script>
-<script src="__PUBLIC__/js/common_js.js" type="text/javascript"></script>
-<script src="__PUBLIC__/js/jquery.foucs.js" type="text/javascript"></script>
+<link href="/Public/css/css.css" rel="stylesheet" type="text/css" />
+<link href="/Public/css/common.css" rel="stylesheet" type="text/css" />
+<link href="/Public/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script src="/Public/js/jquery.min.1.8.2.js" type="text/javascript"></script>
+<script src="/Public/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="/Public/js/slider.js"></script>
+<script src="/Public/js/common_js.js" type="text/javascript"></script>
+<script src="/Public/js/jquery.foucs.js" type="text/javascript"></script>
 <script src="http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=402727"></script>
-<script type="text/javascript" src="__PUBLIC__/js/jquery.spinner.js"></script>
-<link rel="stylesheet" href="__PUBLIC__/css/jquery.spinner.css" />
-<link rel="stylesheet" href="__PUBLIC__/css/ShopShow.css" type="text/css" />
-<link rel="stylesheet" href="__PUBLIC__/css/MagicZoom.css" type="text/css" />
-<script src="__PUBLIC__/js/MagicZoom.js" type="text/javascript"></script>
+<script type="text/javascript" src="/Public/js/jquery.spinner.js"></script>
+<link rel="stylesheet" href="/Public/css/jquery.spinner.css" />
+<link rel="stylesheet" href="/Public/css/ShopShow.css" type="text/css" />
+<link rel="stylesheet" href="/Public/css/MagicZoom.css" type="text/css" />
+<script src="/Public/js/MagicZoom.js" type="text/javascript"></script>
 <!--[if IE 7]>
 <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
 <![endif]-->
@@ -28,13 +28,9 @@ body{margin:20px;}
 
 <body>
 <!--顶部样式-->
-<?php 
-		include('./Application/Home/View/Public/header.html'); 
-	//echo file_get_contents('http://www.vegetable.com/__APP__/Home/public/header');
-
- ?>
+<?php  include('./Application/Home/View/Public/header.html'); ?>
 <!---->
-<div><a href="#"><img src="__PUBLIC__/images/AD_page_img_02.png" width="100%"/></a></div>
+<div><a href="#"><img src="/Public/images/AD_page_img_02.png" width="100%"/></a></div>
 <!--位置-->
 <div class="Bread_crumbs">
  <div class="Inside_pages clearfix">
@@ -50,38 +46,38 @@ body{margin:20px;}
 <!--商品详细介绍-->
 <div class="Inside_pages clearfix">
  <div class="left_style">
-    <div class="title_img_p"><img src="__PUBLIC__/images/p_vegetables_img.png" /></div>
+    <div class="title_img_p"><img src="/Public/images/p_vegetables_img.png" /></div>
    <div class="ranking">
     <div class="ranking_title"><span>销量</span>排行</div>
     <ul class="ranking_list">
      <li class="">
      <em class="ranking_label">1</em>
-     <a href="#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
+     <a href="#" class="img"> <img src="/Public/images/product_img_17.png" width="100px" height="100px" /></a>
      <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
      <p class="price"><b>￥</b>12.54</p>
      <p><a href="#">立即查看< </a></p>
      </li>
      <li class="">
      <em class="ranking_label">2</em>
-     <a href="#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
+     <a href="#" class="img"> <img src="/Public/images/product_img_17.png" width="100px" height="100px" /></a>
      <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
      <p class="price"><b>￥</b>12.54</p>
      <p><a href="#">立即查看< </a></p>
      </li><li class="">
      <em class="ranking_label">3</em>
-     <a href="#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
+     <a href="#" class="img"> <img src="/Public/images/product_img_17.png" width="100px" height="100px" /></a>
      <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
      <p class="price"><b>￥</b>12.54</p>
      <p><a href="#">立即查看< </a></p>
      </li><li class="">
      <em class="ranking_label">4</em>
-     <a href="#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
+     <a href="#" class="img"> <img src="/Public/images/product_img_17.png" width="100px" height="100px" /></a>
      <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
      <p class="price"><b>￥</b>12.54</p>
      <p><a href="#">立即查看< </a></p>
      </li><li class="">
      <em class="ranking_label">5</em>
-     <a href="#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
+     <a href="#" class="img"> <img src="/Public/images/product_img_17.png" width="100px" height="100px" /></a>
      <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
      <p class="price"><b>￥</b>12.54</p>
      <p><a href="#">立即查看< </a></p>
@@ -96,12 +92,12 @@ body{margin:20px;}
      <div class="mod_picfold clearfix">
     <div class="clearfix" id="detail_main_img">
 	<div id="tsShopContainer">
-	<div id="tsImgS"><a href="../../../../../CI/public/uploads/{$a_img}" title="Images" class="MagicZoom" id="MagicZoom"><img width="300" height="300" src="../../../../../CI/public/uploads/{$a_img}" /></a></div>
+	<div id="tsImgS"><a href="../../../../../CI/public/uploads/<?php echo ($a_img); ?>" title="Images" class="MagicZoom" id="MagicZoom"><img width="300" height="300" src="../../../../../CI/public/uploads/<?php echo ($a_img); ?>" /></a></div>
 	<div id="tsPicContainer">
 		<div id="tsImgSArrL" onclick="tsScrollArrLeft()"></div>
 		<div id="tsImgSCon">
 			<ul>
-				<li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img height="42" width="42" src="../../../../../CI/public/uploads/{$a_img}" tsImgS="../../../../../CI/public/uploads/{$a_img}" /></li>
+				<li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img height="42" width="42" src="../../../../../CI/public/uploads/<?php echo ($a_img); ?>" tsImgS="../../../../../CI/public/uploads/<?php echo ($a_img); ?>" /></li>
 				<li onclick="showPic(1)" rel="MagicZoom"><img height="42" width="42" src="../../../../../CI/public/uploads/timg3.jpg" tsImgS="../../../../../CI/public/uploads/timg3.jpg" /></li>
 
 			</ul>
@@ -110,7 +106,7 @@ body{margin:20px;}
 	</div>
 	<img class="MagicZoomLoading" width="16" height="16" src="images/loading.gif" alt="Loading..." />
 </div>
-	 <script src="__PUBLIC__/js/ShopShow.js"></script>
+	 <script src="/Public/js/ShopShow.js"></script>
 	</div>
     <div class="Sharing">
      <div class="bdsharebuttonbox right">
@@ -147,15 +143,15 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
 </script>
   <!--收藏-->
  
-	  <div class="coding">商品编码：{$snumber}</div>
+	  <div class="coding">商品编码：<?php echo ($snumber); ?></div>
 	 </div>
    </div>
    <!--购买信息-->
     <div class="Buying_info">
 		
-      <div class="product_name"><h2>{$a_name}</h2><span>{$a_desc}</span></div>
+      <div class="product_name"><h2><?php echo ($a_name); ?></h2><span><?php echo ($a_desc); ?></span></div>
       <div class="product_price">
-       <div class="price"><label>商城价：</label>￥{$a_price} <b>{$unit}</b></div>
+       <div class="price"><label>商城价：</label>￥<?php echo ($a_price); ?> <b><?php echo ($unit); ?></b></div>
        <!-- <div class="jyScore-fra"><span><em style="width:60px;"></em></span><b>4.5</b><a href="#">共有16条评论</a></div> -->
       </div>
       <div class="productDL">
@@ -168,14 +164,14 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
         <div class="Numbers">
 		  <input type="text" class="spinnerExample" onkeyup="keyup()"/>
 		 </div>
-        </dd><dd class="left Quantity">(库存：{$snum})</dd></dl>
+        </dd><dd class="left Quantity">(库存：<?php echo ($snum); ?>)</dd></dl>
 		<dl><dt>总价：</dt><dd class="left">
         <div class="Numbers">
-		  <font color="red"><h2 id="zongjia">￥{$a_price}</h2></font>
+		  <font color="red"><h2 id="zongjia">￥<?php echo ($a_price); ?></h2></font>
 		 </div>
         </dd></dl>
       </div>
-      <div class="product_Quantity">销量：{$sbuy}</div>
+      <div class="product_Quantity">销量：<?php echo ($sbuy); ?></div>
 	  
       <div class="operating">
        <a href="#" class="buy_btn"></a>
@@ -188,21 +184,21 @@ $('.spinnerExample').spinner({});
 	$(document).on('click','.increase',function(){
 		var num=$('.spinnerExample').val();
 		//alert(num);
-		var zongjia=num*{$a_price};
+		var zongjia=num*<?php echo ($a_price); ?>;
 		//alert(zongjia)
 		$("#zongjia").html('￥'+zongjia)
 	})
 	$(document).on('click','.decrease',function(){
 		var num=$('.spinnerExample').val();
 		//alert(num);
-		var zongjia=num*{$a_price};
+		var zongjia=num*<?php echo ($a_price); ?>;
 		//alert(zongjia)
 		$("#zongjia").html('￥'+zongjia)
 	})
 	function keyup(){
 		var num=$('.spinnerExample').val();
 		//alert(num);
-		var zongjia=num*{$a_price};
+		var zongjia=num*<?php echo ($a_price); ?>;
 		//alert(zongjia)
 		$("#zongjia").html('￥'+zongjia)
 	}
