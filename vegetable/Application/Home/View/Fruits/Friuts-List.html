@@ -28,7 +28,7 @@
 <!--位置-->
 <div class="Bread_crumbs">
  <div class="Inside_pages clearfix">
-   <div class="left">当前位置：<a href="__PUBLIC__/#">首页</a>&gt;<a href="__PUBLIC__/#">素菜馆</a></div>
+   <div class="left">当前位置：<a href="__PUBLIC__/#">首页</a>&gt;<a href="__PUBLIC__/#">水果馆</a></div>
    <div class="right Search">
    <form>
     <input name="" type="text"  class="Search_Box"/>
@@ -45,162 +45,35 @@
    <div class="ranking">
     <div class="ranking_title"><span>销量</span>排行</div>
     <ul class="ranking_list">
+    <?php foreach($res as $v) {?>
      <li class="">
      <em class="ranking_label">1</em>
-     <a href="__PUBLIC__/#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="__PUBLIC__/#">立即查看< </a></p>
+     <a href="__PUBLIC__/#" class="img"> <img src="../../../CI/public/uploads/<?php echo $v['simg']['1']?>" width="100px" height="100px" /></a>
+     <p class="ranking_name"><?php echo $v['sname']?></p>
+     <p class="price"><b>￥</b><?php echo $v['sprice']?></p>
+     <p><a href="__APP__/Home/Xiangqing/index">立即查看 </a></p>
      </li>
-     <li class="">
-     <em class="ranking_label">2</em>
-     <a href="__PUBLIC__/#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="__PUBLIC__/#">立即查看< </a></p>
-     </li><li class="">
-     <em class="ranking_label">3</em>
-     <a href="__PUBLIC__/#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="__PUBLIC__/#">立即查看< </a></p>
-     </li><li class="">
-     <em class="ranking_label">4</em>
-     <a href="__PUBLIC__/#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="__PUBLIC__/#">立即查看< </a></p>
-     </li><li class="">
-     <em class="ranking_label">5</em>
-     <a href="__PUBLIC__/#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="__PUBLIC__/#">立即查看< </a></p>
-     </li>
+     <?php }?>
     </ul>
    </div>
  </DIV>
  <DIV class="right_style">
     <ul class="list_style">
-     <li class="clearfix">
+       <?php foreach($arr as $v) {?>
+      <li class="clearfix">            <!--         ../../index.php/Home/Fruits/CI/public/uploads                      -->
        <div class="product_lists clearfix">
-        <a href="__PUBLIC__/#" class="Collect"></a>
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
+           <?php if($v['status']=="1") {?>
+                 <p ><a href="javascript:void(0)" class="Collect"  rel="<?php echo $v['sid']?>"  style="background-image: url(../../../../Public/images/1.png ) "></a></p> 
+           <?php }?>
+         <p><a href="javascript:void(0)" class="Collect"  rel="<?php echo $v['sid']?>"></a></p>
+          <a href="__APP__/Home/Xiangqing/index"><img src="../../../CI/public/uploads/<?php echo $v['simg']['1']?>" width="208px" height="219px" /></a>
+        <p class="title_p_name"><?php echo $v['sname']?></p>
+        <p class="title_Profile"><?php echo $v['sdesc']?></p>
+        <p class="price"><b>￥</b><?php echo $v['sprice']?></p>
+        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index?sid=<?php echo $v['sid']?>" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
         </div>
        </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-       <a href="__PUBLIC__/#" class="Collect"></a>
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-       <a href="__PUBLIC__/#" class="Collect"></a>
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-       <a href="__PUBLIC__/#" class="Collect"></a>
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-       <a href="__PUBLIC__/#" class="Collect"></a>
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
-        </div>
-       </li> <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
-        </div>
-       </li> <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
-        </div>
-       </li>
-        <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
-        </div>
-       </li> <li class="clearfix">
-       <div class="product_lists clearfix">
-        <a href="__PUBLIC__/#"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-        <p class="title_p_name">浦江多汁红提</p>
-        <p class="title_Profile">绿色有机天然无污染</p>
-        <p class="price"><b>￥</b>13.5</p>
-        <p class="btn_style"><a href="__APP__/Home/Xiangqing/index" class="buy_btn"></a><a href="__APP__/Home/Xiangqing/index" class="Join_btn"></a></p>
-        </div>
-       </li>
+      <?php }?>
     </ul>
  </DIV>
  </div>
@@ -209,3 +82,30 @@
 <?php include('./Application/Home/View/Public/footer.html'); ?>
 </body>
 </html>
+<script>
+           $(function(){
+             $(".Collect").click(function(){
+                  var love = $(this);
+                  var sid = love.attr('rel')
+                  love.css("background-image","url('../../../../Public/images/1.png')")
+                 //love.css.background:(url('../..__PUBLIC__/images/Complex_img.png'))
+                 $.ajax({
+                          type:"GET",
+                          url:"click",
+                          data:"sid="+sid,
+                          success:function(data){
+                                  if(data=="1")
+                                  {
+                                       alert("已收藏到特色馆");
+                                       love.css("background-image","url('../../../../Public/images/1.png')")
+                                  }else
+                                  {
+                                      alert("你已经收藏过了") ;
+                                      love.css("background-image","url('../../../../Public/images/1.png')")
+                                  }
+
+                          }
+                 })
+             })
+           })   
+</script>

@@ -150,7 +150,7 @@
 	 top:240px; 
 	 right:20px;
 }
-.Inside_pages .list_style a.Collect:hover{background:url(../images/Complex_img.png) no-repeat; background-position:right -17px;}
+#.Inside_pages .list_style a.Collect:hover{background:url(../images/Complex_img.png) no-repeat; background-position:right -17px;}
 .fruits_Forum .title_style{ background:url("../images/sg_pro_img_05.png") no-repeat; background-position:right; height:350px;}
 .fruits_Forum .title_style .title_name{left:0px; background:url("../images/sg_pro_img_08.png") no-repeat;}
 .fruits_Forum .title_style .title_img{right:0px; width:271px; height:232px; }
@@ -587,7 +587,7 @@
 	width:20px; 
 	display:block;
 }
-.Group_buy .Group_list  a.Collect:hover {background: url(../images/Complex_img.png) no-repeat;background-position: right -17px;}
+#.Group_buy .Group_list  a.Collect:hover {background: url(../images/Complex_img.png) no-repeat;background-position: right -17px;}
 .Group_buy .Group_list  a.Collect {
 	position: absolute;
 	width: 20px;
