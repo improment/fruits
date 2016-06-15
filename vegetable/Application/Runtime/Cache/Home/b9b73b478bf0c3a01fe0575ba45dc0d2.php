@@ -311,9 +311,9 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
       </div>
       <div class="productDL">
         <dl><dt>包装：</dt><dd class="left">
-        <div class="item  selected"><b></b><a href="#none" title="小礼盒">小礼盒</a></div> 
-        <div class="item"><b></b><a href="#none" title="普通包装">普通包装</a></div>
-        <div class="item"><b></b><a href="#none" title="大礼盒">大礼盒</a></div></dd></dl>
+        <div class="item  selected"><b></b><a href="#none" title="小礼盒" class="box">小礼盒</a></div> 
+        <div class="item"><b></b><a href="#none" title="普通包装" class="box">普通包装</a></div>
+        <div class="item"><b></b><a href="#none" title="大礼盒" class="box">大礼盒</a></div></dd></dl>
         <dl><dt>数量：</dt><dd class="left">
         <div class="Numbers">
 		  <a href="javascript:void(0);" class="jian">-</a>
@@ -330,8 +330,8 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
       </div>
       <div class="product_Quantity">销量：<?php echo ($arr["sbuy"]); ?></div>
       <div class="operating">
-       <a href="#" class="buy_btn"></a>
-       <a href="#" class="Join_btn"></a>
+       <a href="/index.php/Home/Cart/index/sid/<?php echo ($arr["sid"]); ?>" class="buy_btn"></a>
+       <a href="javascript:void(0)" class="Join_btn" id="join" value="<?php echo ($arr["sid"]); ?>"></a>
        <a href="#" class="Collect_btn"></a>
       </div>
     </div>
@@ -357,16 +357,19 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
        //加
    $(".jia").click(function(){
     var number = $("#number").val();
-    var price = $("#price").html();
-    var zong = number*(price)
-       $("#zhi").children().html(zong+"元")
+   // alert(parseInt(number));
+    
         if(number>=100)
        {
              alert("库存不足");
              $("#number").val(number);
        }else{
           number = parseInt(number)+1;
-         $("#number").val(number);
+        $("#number").val(number);
+         var price = $("#price").html();
+         var zong = number*(price)
+       $("#zhi").children().html(zong+"元")
+        //alert(number)
        }
    
    
@@ -374,21 +377,39 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
 //减
     $(".jian").click(function(){
     var number = $("#number").val();
-        var price = $("#price").html();
-    var zong = number*(price)
-       $("#zhi").children().html(zong+"元")
+   
     if(number =='1')
     {
        $("#number").val(number);
     }else
     {
-                  number = parseInt(number)-1;
-                  $("#number").val(number);
+        number = parseInt(number)-1;
+        $("#number").val(number);
+        var price = $("#price").html();
+        var zong = number*(price)
+        $("#zhi").children().html(zong+"元")
     }
    })
-
-
- //总价
-
-      
+   
+  //加入购物车
+  $('.Join_btn').click(function(){
+     sid=$('.Join_btn').attr('value');
+     unit = $('.box').attr('title');
+     number = $("#number").val();
+     zongjia = $("#zhi").children().html();
+     $.ajax({
+         type:'GET',
+         url:'../Cart/collection',
+         data:"sid="+sid+"&unit="+unit+"&number="+number+"&zongjia="+zongjia,
+         success:function(msg){
+             alert(msg)
+         }
+         
+         
+     })
+     
+     
+  })
+  
+ 
 </script>
