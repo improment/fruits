@@ -46,17 +46,17 @@
        <div class="Group_info">
          <a href="#" class="Collect"></a>
          <ul>
-          <li class="Group_p_name"><a href="#"><?php echo ($v["a_name"]); ?></a></li>
-          <li class="Group_p_about"><?php echo ($v["a_desc"]); ?></li>
+          <li class="Group_p_name"><a href="#"><?php echo ($v["sname"]); ?></a></li>
+          <li class="Group_p_about"><?php echo ($v["sdesc"]); ?></li>
           <Li><?php echo ($v["unit"]); ?></Li>
           <li class="Group_price"><span class="Current_price"><i>￥</i><?php echo ($v["a_price"]); ?>.00</span> <span class="Group_List">原价：<?php echo ($v["sprice"]); ?></span></li>
           <li class="Group_p_buy">
-           <span class="Group_Number"><em></em><?php echo ($v["people"]); ?>人购买</span>
+           <span class="Group_Number"><em></em><?php echo ($v["sbuy"]); ?>人购买</span>
            <span class="Group_button right"><a href="/index.php/Home/Active/product/id/<?php echo ($v["aid"]); ?>" class="buy_button"></a></span>
           </li>
          </ul>
        </div>
-       <div class="Group_img"><a href=""><img src="../../../CI/public/uploads/<?php echo ($v["a_img"]); ?>"  height="195" width="365"/></a></div>
+       <div class="Group_img"><a href=""><img src="../../../CI/public/uploads/<?php $info=explode('|',$v['simg']); echo $info[0]?>"  height="195" width="365"/></a></div>
        </div>
        <div class="Group_time">
          <em ></em><div class="timerbg">
@@ -105,17 +105,17 @@
         <div class="left_Group_name">
         <a href="#" class="Collect"></a>
          <ul>
-          <li class="Group_p_name"><a href="#"><?php echo ($v["a_name"]); ?></a></li>
-          <li class="Group_p_about"><?php echo ($v["a_desc"]); ?></li>
+          <li class="Group_p_name"><a href="#"><?php echo ($v["sname"]); ?></a></li>
+          <li class="Group_p_about"><?php echo ($v["sdesc"]); ?></li>
           <Li class="spacing"><?php echo ($v["unit"]); ?></Li>
           <li class="Group_price"><span class="Current_price"><i>￥</i><?php echo ($v["a_price"]); ?>.00</span> <span class="Group_List">原价：<?php echo ($v["sprice"]); ?></span></li>
           <li class="Group_p_buy">
-           <span class="Group_Number"><em></em><?php echo ($v["people"]); ?>人购买</span>
-           <span class="Group_button right"><a href="#" class="buy_button"></a></span>
+           <span class="Group_Number"><em></em><?php echo ($v["sbuy"]); ?>人购买</span>
+           <span class="Group_button right"><a href="/index.php/Home/Active/product/id/<?php echo ($v["aid"]); ?>" class="buy_button"></a></span>
           </li>
          </ul>
         </div>
-        <div class="right_Group_img"><a href=""><img src="../../../CI/public/uploads/<?php echo ($v["a_img"]); ?>"  height="370" width="365"/></a></div>
+        <div class="right_Group_img"><a href=""><img src="../../../CI/public/uploads/<?php $info=explode('|',$v['simg']); echo $info[0]?>"  height="370" width="365"/></a></div>
        </div>
         <div class="Group_time">
          <em></em><div class="timerbg">
@@ -160,15 +160,15 @@
      <div class="other_Group clearfix">
 	 <?php if(is_array($are2)): foreach($are2 as $key=>$v): ?><div class="g_p_list">
         <div class="g_p_style"> 
-         <div class="g_p_img"><a href="#"><img src="../../../CI/public/uploads/<?php echo ($v["a_img"]); ?>"  height="220" width="274"/></a></div>
+         <div class="g_p_img"><a href="#"><img src="../../../CI/public/uploads/<?php $info=explode('|',$v['simg']); echo $info[0]?>"  height="220" width="274"/></a></div>
         <ul>
          <a href="#" class="Collect"></a>     
-        <li><a href="" class="name"><?php echo ($v["a_name"]); ?></a></li>
-        <li><?php echo ($v["a_desc"]); ?>}</li>
+        <li><a href="" class="name"><?php echo ($v["sname"]); ?></a></li>
+        <li><?php echo ($v["sdesc"]); ?></li>
         <li class="Group_price"><span class="Current_price"><i>￥</i><?php echo ($v["a_price"]); ?>.00</span> <span class="Group_List">原价：<?php echo ($v["sprice"]); ?></span></li>
         <li class="Group_p_buy">
-           <span class="Group_Number"><?php echo ($v["people"]); ?>人购买</span>
-           <span class="Group_button right"><a href="#" class="buy_button"></a></span>
+           <span class="Group_Number"><?php echo ($v["sbuy"]); ?>人购买</span>
+           <span class="Group_button right"><a href="/index.php/Home/Active/product/id/<?php echo ($v["aid"]); ?>" class="buy_button"></a></span>
           </li>
         </ul>
         </div>

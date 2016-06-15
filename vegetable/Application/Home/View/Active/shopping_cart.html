@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="__PUBLIC__/css/css.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/common.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/js/jquery.min.1.8.2.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/slide.js"></script>
+<script src="__PUBLIC__/js/common_js.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/jquery.foucs.js" type="text/javascript"></script>
+<title>购物车</title>
+</head>
+
+<body>
+<!--顶部样式-->
+<?php 
+		include('./Application/Home/View/Public/header.html'); 
+	//echo file_get_contents('http://www.vegetable.com/__APP__/Home/public/header');
+
+ ?>
+<!---->
+<div><a href="#"><img src="__PUBLIC__/images/AD_page_img_02.png" width="100%"/></a></div>
+<!--位置-->
+<div class="Bread_crumbs">
+ <div class="Inside_pages clearfix">
+   <div class="right Search">
+   <form>
+    <input name="" type="text"  class="Search_Box"/>
+    <input name="" type="button"  name="" class="Search_btn"/>
+    </form>
+   </div>
+ </div>
+</div>
+<!--购物车样式-->
+<div class="Narrow">
+  <div class="shop_cart">
+     <div class="schedule"></div>
+     <div class="cart_style">
+       <div class="title_name">
+        <ul>
+         <li class="title_width"><label class="auto-label"><input type="checkbox" id="rememberMe"><span>全选</span></label></li>
+         <li class="title_width1">商品信息</li>
+         <li class="title_width2">单价</li>
+         <li class="title_width3">数量</li>
+         <li class="title_width4">小计</li>
+         <li class="title_width5">操作</li>
+        </ul>
+       </div>
+       <div class="list_style">
+        <div class="class_title">花果山特色馆</div>
+		<foreach name="cookie" item="v">
+		<ul class="product_cart">
+         <li class="title_width"><input type="checkbox" id="rememberMe"></li>
+         <li class="title_width1">
+         <a href="#" class="product_img left"><img src="{$v.simg}" id="simg_{$v.sid}"/></a>
+         <p class="cart_content">
+         <a href="#" class="title_name" id="title_name_{$v.sid}">{$v.sname}</a>
+         <span id="unit_{$v.sid}"> {$v.unit}</span>
+         </p>
+         </li>
+         <li class="title_width2">￥<span id="price_{$v.sid}">{$v.a_price}</span></li>
+         <li class="title_width3">
+           <div class="Numbers">
+		  <a href="javascript:void(0);"  class="jian" id="jian_{$v.sid}">-</a>
+		  <input id="number_{$v.sid}" name="number" type="text" value="{$v.snum}" class="number_text">
+		  <a href="javascript:void(0);"  class="jia" id="jia_{$v.sid}" >+</a>
+		 </div>        
+         </li>
+         <li class="title_width4">￥<span id="xiaoji_{$v.sid}">{$v.zongjia}</span></li>
+         <li class="title_width5"><a href="#">删除</a></li>
+         </ul>
+		 <span id="sprice_{$v.sid}" style="display:none">{$v.sprice}</span>
+		 <span id="yzongjia_{$v.sid}" style="display:none">{$v.yzongjia}</span>
+		 <span id="yzongjia_{$v.sid}" style="display:none">{$v.yzongjia}</span>
+		 <span id="sid_{$v.sid}" style="display:none">{$v.sid}</span>
+		 <script>
+		
+$('#jian_{$v.sid}').click(function(){
+		num=$('#number_{$v.sid}').val();
+		price=$("#price_{$v.sid}").html();
+		//alert(price);
+		//alert(num);
+		zongj=$("#zongj").html();
+		if(num<=1){
+			$('#number_{$v.sid}').val(1);
+			$('#xiaoji_{$v.sid}').html(price);
+		}else{
+			num=num-1;
+			//alert(sid);
+			zong=num*price;
+			numprice=zongj-price;
+			$('#number_{$v.sid}').val(num);
+			$('#xiaoji_{$v.sid}').html(zong);
+			$("#zongj").html(numprice);
+		}
+	});
+	$('#jia_{$v.sid}').click(function(){
+		price=$("#price_{$v.sid}").html();
+		num=$('#number_{$v.sid}').val();
+		zongj=$("#zongj").html();
+		var sname=$("#title_name_{$v.sid}").html();
+		var a_price=$("#price_{$v.sid}").html();
+		var unit=$("#unit_{$v.sid}").html();
+		var sprice=$("#sprice_{$v.sid}").html();
+		var yzongjia=$("#yzongjia_{$v.sid}").html();
+		var sid=$("#sid_{$v.sid}").html();
+		var simg=$("#simg_{$v.sid}").attr('src');
+		if(num==1000){
+			$('#number_{$v.sid}').val(zong);
+		}else{
+			num1=parseInt(num);
+			num2=parseInt(num1+1);
+			zong=num2*price;
+			zongj=parseInt(zongj);
+			price=parseInt(price);
+			yzj=num2*sprice;
+			numprice=parseInt(zongj+price);
+			$('#number_{$v.sid}').val(num2);
+			$('#xiaoji_{$v.sid}').html(zong);
+			$("#zongj").html(numprice);
+			$.post(
+                     "__URL__/floww",
+                    {sid:sid,zongjia:zong,sname:sname,snum:num2,a_price:a_price,simg:simg,unit:unit,sprice:sprice,yzongjia:yzj},
+					function (data) {
+					alert(data);
+                    }
+            )
+		}
+	});
+		 </script>
+		</foreach>
+	
+         
+         
+       </div>
+     </div>
+     <!--操作-->
+     <div class="cart_operating clearfix">
+        <div class="cart_operating_style">
+           <div class="cart_price">商品总价：（不含运费）<b>￥</b><b id="zongj">{$zongjia}</b></div>
+           <div class="cart_btn"><a href="#" class="payment_btn"></a><a href="#" class="continue_btn"></a></div>
+        </div>
+     </div>
+  </div>
+</div>
+<!--底部样式-->
+<?php include('./Application/Home/View/Public/footer.html'); ?>
+</body>
+</html>
