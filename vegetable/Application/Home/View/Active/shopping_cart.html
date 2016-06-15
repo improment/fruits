@@ -54,10 +54,10 @@
 		<ul class="product_cart">
          <li class="title_width"><input type="checkbox" id="rememberMe"></li>
          <li class="title_width1">
-         <a href="#" class="product_img left"><img src="{$v.simg}" /></a>
+         <a href="#" class="product_img left"><img src="{$v.simg}" id="simg_{$v.sid}"/></a>
          <p class="cart_content">
-         <a href="#" class="title_name">{$v.sname}</a>
-         <span> {$v.unit}</span>
+         <a href="#" class="title_name" id="title_name_{$v.sid}">{$v.sname}</a>
+         <span id="unit_{$v.sid}"> {$v.unit}</span>
          </p>
          </li>
          <li class="title_width2">￥<span id="price_{$v.sid}">{$v.a_price}</span></li>
@@ -65,16 +65,18 @@
            <div class="Numbers">
 		  <a href="javascript:void(0);"  class="jian" id="jian_{$v.sid}">-</a>
 		  <input id="number_{$v.sid}" name="number" type="text" value="{$v.snum}" class="number_text">
-		  <a href="javascript:void(0);"  class="jia_{$v.sid}" id="jia_{$v.sid}" >+</a>
+		  <a href="javascript:void(0);"  class="jia" id="jia_{$v.sid}" >+</a>
 		 </div>        
          </li>
          <li class="title_width4">￥<span id="xiaoji_{$v.sid}">{$v.zongjia}</span></li>
          <li class="title_width5"><a href="#">删除</a></li>
          </ul>
+		 <span id="sprice_{$v.sid}" style="display:none">{$v.sprice}</span>
+		 <span id="yzongjia_{$v.sid}" style="display:none">{$v.yzongjia}</span>
+		 <span id="yzongjia_{$v.sid}" style="display:none">{$v.yzongjia}</span>
+		 <span id="sid_{$v.sid}" style="display:none">{$v.sid}</span>
 		 <script>
-		 $('#jian_{$v.sid}').click(function(){
-		 alert(1)
-		 }
+		
 $('#jian_{$v.sid}').click(function(){
 		num=$('#number_{$v.sid}').val();
 		price=$("#price_{$v.sid}").html();
@@ -86,7 +88,7 @@ $('#jian_{$v.sid}').click(function(){
 			$('#xiaoji_{$v.sid}').html(price);
 		}else{
 			num=num-1;
-			//alert(num);
+			//alert(sid);
 			zong=num*price;
 			numprice=zongj-price;
 			$('#number_{$v.sid}').val(num);
@@ -98,6 +100,13 @@ $('#jian_{$v.sid}').click(function(){
 		price=$("#price_{$v.sid}").html();
 		num=$('#number_{$v.sid}').val();
 		zongj=$("#zongj").html();
+		var sname=$("#title_name_{$v.sid}").html();
+		var a_price=$("#price_{$v.sid}").html();
+		var unit=$("#unit_{$v.sid}").html();
+		var sprice=$("#sprice_{$v.sid}").html();
+		var yzongjia=$("#yzongjia_{$v.sid}").html();
+		var sid=$("#sid_{$v.sid}").html();
+		var simg=$("#simg_{$v.sid}").attr('src');
 		if(num==1000){
 			$('#number_{$v.sid}').val(zong);
 		}else{
@@ -106,11 +115,18 @@ $('#jian_{$v.sid}').click(function(){
 			zong=num2*price;
 			zongj=parseInt(zongj);
 			price=parseInt(price);
+			yzj=num2*sprice;
 			numprice=parseInt(zongj+price);
 			$('#number_{$v.sid}').val(num2);
 			$('#xiaoji_{$v.sid}').html(zong);
 			$("#zongj").html(numprice);
-			
+			$.post(
+                     "__URL__/floww",
+                    {sid:sid,zongjia:zong,sname:sname,snum:num2,a_price:a_price,simg:simg,unit:unit,sprice:sprice,yzongjia:yzj},
+					function (data) {
+					alert(data);
+                    }
+            )
 		}
 	});
 		 </script>

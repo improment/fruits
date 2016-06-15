@@ -103,21 +103,25 @@ class ActiveController extends Controller {
 			//echo $k;die;
             $flag=0;
             if($k>0){
-					for($j=0;$j<count($cookie_cards);$j++){
-					$cookie_cards[$j]['uid']=$u_id;
-					if(in_array($cookie_cards[$j]['sid'],$cards[$j])){
-					$snum=$cards[$j]['snum']+$cookie_cards[$j]['snum'];
-					$zongjia=$cards[$j]['zongjia']+$cookie_cards[$j]['zongjia'];
-					$yzongjia=$cards[$j]['yzongjia']+$cookie_cards[$j]['yzongjia'];
-					$Model->execute("update cart set snum='$snum',zongjia='$zongjia',yzongjia='$yzongjia' where cid='$cards[$j][cid]'"); 
-					}else{
-					$sql = $cart->fetchSql(true)->add($cookie_cards[$j]);
-					$Model->execute($sql);
-						
-					} 
+				$ssid='';
+					for($i=0;$i<$k;$i++){
+						$ssid.=$cards[$i]['sid'].',';
+					}
+					//echo $ssid;die;
+					$len=strrpos($ssid,',');
+					$new_str=substr($ssid,0,$len);
+					$Model->execute("delete from cart where sid in($new_str)"); 
+					for($i=0;$i<count($cookie_cards);$i++){
+					   $cookie_cards[$i]['uid']=$u_id;
+					   $sql = $cart->fetchSql(true)->add($cookie_cards[$i]);
+					   $Model->execute($sql);
+					 
+					 }
+					   cookie('cards',null);
 										
                 }
-				cookie('cards',null);
+
+				//cookie('cards',null);
 				 $flag=1;
 				 
             }
@@ -138,7 +142,7 @@ class ActiveController extends Controller {
 			
 		}
 	  }
-	}
+	
 	public function shopping_cart(){
 		$u_id=$_SESSION['name']['uid'];
 		if($u_id==''){
@@ -189,9 +193,9 @@ class ActiveController extends Controller {
             if($k>0){
                 foreach($cookie_cards as $kk=>$v){
                     if($data['sid']==$v['sid']){
-                        $cookie_cards[$kk]['snum']=$v['snum']+$data['snum'];
-						$cookie_cards[$kk]['zongjia']=$v['zongjia']+$data['zongjia'];
-						$cookie_cards[$kk]['yzongjia']=$v['yzongjia']+$data['yzongjia'];
+                        $cookie_cards[$kk]['snum']=$data['snum'];
+						$cookie_cards[$kk]['zongjia']=$data['zongjia'];
+						$cookie_cards[$kk]['yzongjia']=$data['yzongjia'];
                         $flag=1;
                     }
                 }
