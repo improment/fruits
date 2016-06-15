@@ -97,4 +97,20 @@ class User extends CI_Model {
         $bool=$this->db->update('comment',array('cstae'=>1)); 
         return $bool;
     }
+
+    /*活动列表*/
+    public function Activitylist()
+    {
+        $query = $this->db->from('activity')
+        ->join('shop','shop.sid=activity.sid')
+        ->get()
+        ->result_array();
+        return $query;
+    }
+
+    /*发布活动*/
+    public function Activityadd($data)
+    {
+        return $this->db->insert('activity', $data);    
+    }
 }
