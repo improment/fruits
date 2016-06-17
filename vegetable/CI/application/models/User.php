@@ -24,11 +24,24 @@ class User extends CI_Model {
     }
 
     /*查询商品*/
-    public function Goodslist()
+    public function Goodslist($per_page,$page)
     {
-        $query = $this->db->get('shop')->result_array();
+        $query = $this->db
+        ->limit($per_page,$page)
+        ->get('shop')
+        ->result_array();
         return $query; 
     }
+    
+    /*查询商品*/
+    public function Goodslists()
+    {
+        $query = $this->db
+        ->get('shop')
+        ->result_array();
+        return $query; 
+    }
+
 
     /*用户查询*/
     public function Userlist()
@@ -99,9 +112,10 @@ class User extends CI_Model {
     }
 
     /*活动列表*/
-    public function Activitylist()
+    public function Activitylist($per_page,$page)
     {
         $query = $this->db->from('activity')
+        ->limit($per_page,$page)
         ->join('shop','shop.sid=activity.sid')
         ->get()
         ->result_array();
@@ -112,5 +126,11 @@ class User extends CI_Model {
     public function Activityadd($data)
     {
         return $this->db->insert('activity', $data);    
+    }
+
+    /*轮播管理*/
+    public function Photolist()
+    {
+        return $this->db->get('lunbo')->result_array();    
     }
 }

@@ -16,7 +16,7 @@ class Activity extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('User');	//引入model
-		$data['row']=$this->User->Goodslist();
+		$data['row']=$this->User->Goodslists();
 		$this->load->view('Activity_form.html',$data);
 	}
 
@@ -33,10 +33,27 @@ class Activity extends CI_Controller {
 	}
 
 	/*商品列表*/
-	public function Activitylist()
+	public function Activitylist($page=0)
 	{
 		$this->load->model('User');	//引入model
-		$data['row']=$this->User->Activitylist();
+		$per_page=5;
+		$row=$this->User->Activitylist($per_page,$page);
+		$total_rows=$this->db->count_all_results('activity');
+		//获取当前数据
+		$this->load->library('pagination');
+	    $config['base_url'] = site_url().'/Activity/Activitylist';
+	    $config['total_rows'] = $total_rows;
+	    $config['per_page'] = $per_page;
+		$config['first_link'] = '首页';
+		$config['last_link'] = '尾页';
+		$config['prev_link'] = '上页';
+		$config['next_link'] = '下页';
+		$this->pagination->initialize($config);
+		$pagestr = $this->pagination->create_links();
+		//var_dump($pagestr);die;
+		$data['row']=$row;
+		//为模板定义变量
+		$data['pagestr']=$pagestr;
 		$this->load->view('activity_list.html',$data);
 	}
 

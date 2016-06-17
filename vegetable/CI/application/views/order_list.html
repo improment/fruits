@@ -122,14 +122,30 @@
 														</td>
 														<td><a href="#"><?php echo $v['sname'] ?></a></td>
 														<td class="hidden-480">
-														<img height="50px" width="50px" src="<?php echo base_url('public/uploads')?>/2.jpg">
+														<?php
+														$imgs=explode('|',$v['simg']);
+														$img=$imgs['0'];
+														?>
+														<img height="50px" width="50px" src="<?php echo base_url('public/uploads')?>/<?php echo $img ?>">
 														</td>
 														<td class="hidden-480">
 														<?php echo $v['oprice'] ?>
 														</td>
-														<td><?php echo $v['otime'] ?></td>
+														<td><?php echo date("Y-m-d H:i:s",time($v['otime'])) ?></td>
 														<td><?php echo $v['uname'] ?></td>
-														<td><?php echo $v['ostatus'] ?></td>
+														<td>
+														<?php
+														if($v['ostatus']==0){
+														echo "等待买家付款";
+														}elseif($v['ostatus']==1){
+														echo "等待发货";
+														}elseif($v['ostatus']==2){
+														echo "已发货，等待买家确认收货";
+														}elseif($v['ostatus']==3){
+														echo "买家确认收货";
+														}
+														?>
+														</td>
 														
 
 														<td>
