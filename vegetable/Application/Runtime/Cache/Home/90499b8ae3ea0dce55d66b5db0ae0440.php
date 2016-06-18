@@ -92,13 +92,17 @@ body{margin:20px;}
      <div class="mod_picfold clearfix">
     <div class="clearfix" id="detail_main_img">
 	<div id="tsShopContainer">
-	<div id="tsImgS"><a href="../../../../../CI/public/uploads/<?php echo ($a_img); ?>" title="Images" class="MagicZoom" id="MagicZoom"><img width="300" height="300" src="../../../../../CI/public/uploads/<?php echo ($a_img); ?>" /></a></div>
+	<div id="tsImgS"><a href="../../../../../CI/public/uploads/<?php $info=explode('|',$simg); echo $info[0]?>" title="Images" class="MagicZoom" id="MagicZoom">
+	<img width="300" height="300" src="../../../../../CI/public/uploads/<?php $info=explode('|',$simg); echo $info[0]?>" class="simg"/>
+	</a></div>
 	<div id="tsPicContainer">
 		<div id="tsImgSArrL" onclick="tsScrollArrLeft()"></div>
 		<div id="tsImgSCon">
 			<ul>
-				<li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img height="42" width="42" src="../../../../../CI/public/uploads/<?php echo ($a_img); ?>" tsImgS="../../../../../CI/public/uploads/<?php echo ($a_img); ?>" /></li>
-				<li onclick="showPic(1)" rel="MagicZoom"><img height="42" width="42" src="../../../../../CI/public/uploads/timg3.jpg" tsImgS="../../../../../CI/public/uploads/timg3.jpg" /></li>
+			<?php  $info=explode('|',$simg); foreach($info as $k=>$v){ ?>
+				<li onclick="showPic(<?php echo ($k); ?>)" rel="MagicZoom"><img height="42" width="42" src="../../../../../CI/public/uploads/<?php echo ($v); ?>" tsImgS="../../../../../CI/public/uploads/<?php echo ($v); ?>" /></li>
+				<?php
+ } ?>
 
 			</ul>
 		</div>
@@ -149,9 +153,10 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
    <!--购买信息-->
     <div class="Buying_info">
 		
-      <div class="product_name"><h2><?php echo ($a_name); ?></h2><span><?php echo ($a_desc); ?></span></div>
+      <div class="product_name"><h2 id="sname" data-id="<?php echo ($sid); ?>"><?php echo ($sname); ?></h2><span><?php echo ($sdesc); ?></span></div>
       <div class="product_price">
-       <div class="price"><label>商城价：</label>￥<?php echo ($a_price); ?> <b><?php echo ($unit); ?></b></div>
+       <div class="price"><label>优惠价：</label>￥<span id="price"><?php echo ($a_price); ?></span> <b class="unit"><?php echo ($unit); ?></b></br><label>原&nbsp;&nbsp;&nbsp;价：</label><s>￥</s><s class="yuanjia"><?php echo ($sprice); ?></s></div>
+	   
        <!-- <div class="jyScore-fra"><span><em style="width:60px;"></em></span><b>4.5</b><a href="#">共有16条评论</a></div> -->
       </div>
       <div class="productDL">
@@ -167,7 +172,7 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
         </dd><dd class="left Quantity">(库存：<?php echo ($snum); ?>)</dd></dl>
 		<dl><dt>总价：</dt><dd class="left">
         <div class="Numbers">
-		  <font color="red"><h2 id="zongjia">￥<?php echo ($a_price); ?></h2></font>
+		  <font color="red"><h2 >￥<span id="zongjia"><?php echo ($a_price); ?></span></h2></font>
 		 </div>
         </dd></dl>
       </div>
@@ -175,7 +180,7 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
 	  
       <div class="operating">
        <a href="#" class="buy_btn"></a>
-       <a href="#" class="Join_btn"></a>
+       <a href="#" class="Join_btn" onclick="join_che()"></a>
        <a href="#" class="Collect_btn"></a>
       </div>
 	  
@@ -186,21 +191,21 @@ $('.spinnerExample').spinner({});
 		//alert(num);
 		var zongjia=num*<?php echo ($a_price); ?>;
 		//alert(zongjia)
-		$("#zongjia").html('￥'+zongjia)
+		$("#zongjia").html(zongjia)
 	})
 	$(document).on('click','.decrease',function(){
 		var num=$('.spinnerExample').val();
 		//alert(num);
 		var zongjia=num*<?php echo ($a_price); ?>;
 		//alert(zongjia)
-		$("#zongjia").html('￥'+zongjia)
+		$("#zongjia").html(zongjia)
 	})
 	function keyup(){
 		var num=$('.spinnerExample').val();
 		//alert(num);
 		var zongjia=num*<?php echo ($a_price); ?>;
 		//alert(zongjia)
-		$("#zongjia").html('￥'+zongjia)
+		$("#zongjia").html(zongjia)
 	}
 </script>
     </div>
@@ -222,3 +227,34 @@ $('.spinnerExample').spinner({});
 <?php include('./Application/Home/View/Public/footer.html'); ?>
 </body>
 </html>
+<script>
+function join_che(){
+            var g_name=$("#sname").text();
+			//alert(g_name)
+            var nums=$(".spinnerExample").val();
+			//alert(nums)
+            var goods_id=$("#sname").attr('data-id');
+			//alert(goods_id)
+            var price=$("#price").text();
+			//alert(price)
+            var goods_price=$("#zongjia").text();
+			//alert(goods_price)
+            //console.log(g_id)
+			var simg=$(".simg").attr('src');
+			//alert(simg);
+			var unit=$(".unit").text();
+			//alert(unit);
+			var yuanjia=$(".yuanjia").text();
+			var yzongjia=yuanjia*nums;
+			//alert(yzongjia)
+            $.post(
+                    "/index.php/Home/Active/flow",
+                    {sid:goods_id,zongjia:goods_price,sname:g_name,snum:nums,a_price:price,simg:simg,unit:unit,sprice:yuanjia,yzongjia:yzongjia},
+                    function (data) {
+                        alert(data);
+						}
+                        //location.href=""
+                    
+            )
+        }
+</script>

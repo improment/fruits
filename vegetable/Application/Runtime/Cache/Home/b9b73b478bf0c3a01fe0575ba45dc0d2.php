@@ -397,19 +397,15 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
      unit = $('.box').attr('title');
      number = $("#number").val();
      zongjia = $("#zhi").children().html();
+     price = $("#price").html();
+     //alert(price);
      $.ajax({
          type:'GET',
          url:'../Cart/collection',
-         data:"sid="+sid+"&unit="+unit+"&number="+number+"&zongjia="+zongjia,
+         data:"sid="+sid+"&unit="+unit+"&number="+number+"&zongjia="+zongjia+"&price="+price,
          success:function(msg){
              alert(msg)
          }
-         
-         
      })
-     
-     
   })
-  
- 
 </script>
