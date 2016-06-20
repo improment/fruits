@@ -36,7 +36,7 @@ class Activity extends CI_Controller {
 	public function Activitylist($page=0)
 	{
 		$this->load->model('User');	//引入model
-		$per_page=5;
+		$per_page=6;
 		$row=$this->User->Activitylist($per_page,$page);
 		$total_rows=$this->db->count_all_results('activity');
 		//获取当前数据

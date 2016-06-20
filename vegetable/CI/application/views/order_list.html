@@ -123,8 +123,8 @@
 														<td><a href="#"><?php echo $v['sname'] ?></a></td>
 														<td class="hidden-480">
 														<?php
-														$imgs=explode('|',$v['simg']);
-														$img=$imgs['0'];
+														$imgs=explode('/',$v['simg']);
+														$img=$imgs['8'];
 														?>
 														<img height="50px" width="50px" src="<?php echo base_url('public/uploads')?>/<?php echo $img ?>">
 														</td>
@@ -180,7 +180,7 @@
 
 												</tbody>
 											</table>
-											
+											<center><?php echo $pagestr; ?></center>
 										</div><!-- /.table-responsive -->
 									</div><!-- /span -->
 								</div><!-- /row -->
