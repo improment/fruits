@@ -39,8 +39,7 @@ class ActiveController extends Controller {
 		$cart = M("cart");
 		//echo $u_id;die;
 		$data=I('post.');
-        if(empty($u_id))
-            {
+        if(empty($u_id)){
             $cookie_cards=json_decode(cookie('cards'),true);
 			//print_r($cookie_cards);die;
 			
@@ -51,14 +50,11 @@ class ActiveController extends Controller {
             //判断购物车是否已存在该商品
             $flag=0;
             if($k>0){
-            
                 foreach($cookie_cards as $kk=>$v){
-                    
                     if($data['sid']==$v['sid']){
                         $cookie_cards[$kk]['snum']=$v['snum']+$data['snum'];
-                   
-			$cookie_cards[$kk]['zongjia']=$v['zongjia']+$data['zongjia'];
-			$cookie_cards[$kk]['yzongjia']=$v['yzongjia']+$data['yzongjia'];
+						$cookie_cards[$kk]['zongjia']=$v['zongjia']+$data['zongjia'];
+						$cookie_cards[$kk]['yzongjia']=$v['yzongjia']+$data['yzongjia'];
                         $flag=1;
                     }
                 }
@@ -69,16 +65,8 @@ class ActiveController extends Controller {
             }
             cookie('cards',json_encode($cookie_cards),60*60*24*3);
             //var_dump($cookie_cards);
-<<<<<<< HEAD
             echo '1';
         }else{
-=======
-           // echo '1';
-        }else
-        {
-            if(cookie('cards')==''){
-			
->>>>>>> 7e58bf2026b55cb3c34b08e3bf4dde164bcf810a
 			$data['uid']=$u_id;
             $k=0;
             $cards=$Model->query("select * from cart where uid='$u_id'");

@@ -10,6 +10,9 @@ class UserController extends Controller {
 		for($i=0;$i<count($orders);$i++){
 			$arr[date('Y-m-d H:i:s',$orders[$i]['otime'])."订单号:".$orders[$i]['onumber']][]=$orders[$i];
 		}
+		$users=$Model->query("select * from user where uid='$u_id'");
+		$this->assign($users[0]);
+		$this->display('user_info');
 		//print_r($arr);die;
 		$this->assign('list',$arr);
         $this->display('user');
