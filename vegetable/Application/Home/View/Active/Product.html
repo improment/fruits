@@ -189,7 +189,7 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
       <div class="product_Quantity">销量：{$sbuy}</div>
 	  
       <div class="operating">
-       <a href="#" class="buy_btn"></a>
+       <a href="#" class="buy_btn" onclick="join_gou()"></a>
        <a href="#" class="Join_btn" onclick="join_che()"></a>
        <a href="#" class="Collect_btn"></a>
       </div>
@@ -261,10 +261,37 @@ function join_che(){
                     "__URL__/flow",
                     {sid:goods_id,zongjia:goods_price,sname:g_name,snum:nums,a_price:price,simg:simg,unit:unit,sprice:yuanjia,yzongjia:yzongjia},
                     function (data) {
-                        alert(data);
-						}
                         //location.href=""
-                    
+                    }
+            )
+        }
+		function join_gou(){
+            var g_name=$("#sname").text();
+			//alert(g_name)
+            var nums=$(".spinnerExample").val();
+			//alert(nums)
+            var goods_id=$("#sname").attr('data-id');
+			//alert(goods_id)
+            var price=$("#price").text();
+			//alert(price)
+            var goods_price=$("#zongjia").text();
+			//alert(goods_price)
+            //console.log(g_id)
+			var simg=$(".simg").attr('src');
+			//alert(simg);
+			var unit=$(".unit").text();
+			//alert(unit);
+			var yuanjia=$(".yuanjia").text();
+			var yzongjia=yuanjia*nums;
+			//alert(yzongjia)
+            $.post(
+                    "__URL__/flow2",
+                    {sid:goods_id,zongjia:goods_price,sname:g_name,snum:nums,a_price:price,simg:simg,unit:unit,sprice:yuanjia,yzongjia:yzongjia},
+                    function (data) {
+                        if(data==1){
+						location.href="__URL__/shopping_cart";
+						}
+                    }
             )
         }
 </script>

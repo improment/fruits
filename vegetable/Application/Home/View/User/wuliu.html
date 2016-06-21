@@ -1,0 +1,49 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<link rel="stylesheet" href="__PUBLIC__/css/border3.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/border2.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/border.css" />
+</head>
+<body>
+	<div style="display: block;" id="selectCom" class="select-com relative hidden"> <span class="download-qr fr relative"><img style="display: none;" id="downloadQr" class="hidden" src="//cdn.kuaidi100.com/images/qrcode/qr_app.png" height="120" width="120"></span><?php if($company=='中通'){
+					$z='zhongtong';
+	}elseif($company=='顺丰'){
+					$z='shunfeng';
+	}elseif($company=='申通'){
+					$z='shentong';
+	}elseif($company=='天天'){
+					$z='tiantian';
+	}elseif($company=='圆通'){
+					$z='yuantong';
+	}elseif($company=='邮政'){
+					$z='ems';
+	}elseif($company=='韵达'){
+					$z='yunda';
+	}elseif($company=='汇通'){
+					$z='huitong';
+	}?><span style="background: transparent url(&quot;//cdn.kuaidi100.com/images/all/16/<?php echo $z?>.png&quot;) no-repeat scroll 0px 3px;"><a id="selectComBtn"><?php echo $company?>快递</a></span><span style="display: inline;" id="timeCost" class="ico-clock hidden">运单编号:<?php echo $no?></span><span style="display: none;" id="arrTime" class="ico-date hidden"></span> </div>
+	<div id="queryContext" class="mt10px hidden relative" style="z-index: 4; display: block;"> <span style="display: none;" class="qr-sf hidden" id="sfQr"></span>
+      <div class="result-top"><span class="col1">时间</span><span class="col2">地点和跟踪进度</span></div>
+      <table id="queryResult2" class="result-info2" cellspacing="0"><tbody>
+	  <?php foreach($list as $k=>$a){
+	  if($k==0){
+	    $k='status status-first';
+	  }elseif($k==count($list)-1){
+	    $k='status status-wait';
+		}else{
+		$k='status';
+		}
+	?>
+	<tr><td class="row1"><?php echo $a['datetime']?></td><td class="<?php echo $k?>">&nbsp;</td><td> <?php echo $a['remark']?></td>
+	  </tr>
+	<?php }?>
+	  
+	  </tbody>
+	  </table>
+    </div>
+</body>
+</html>

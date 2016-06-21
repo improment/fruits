@@ -1,0 +1,42 @@
+ <div class="Order_form">
+       <div class="user_Borders">
+       <div class="Order_form_list">
+         <table>
+         <thead>
+          <td class="list_name_title0">商品</td>
+          <td class="list_name_title1">单价(元)</td>
+          <td class="list_name_title2">数量</td>
+          <td class="list_name_title4">实付款(元)</td>
+          <td class="list_name_title5">订单状态</td>
+          <td class="list_name_title6">操作</td>
+         </thead> 
+            <tbody>       
+           <tr><td colspan="6" class="Order_form_time"><?php echo date('Y-m-d H:i:s',$otime)?> 订单号：{$onumber}</td></tr>
+           <tr>
+           <td colspan="3">
+             <table class="Order_product_style">
+			 <foreach name="order_list" item="v">
+           <tr>
+           <td>
+            <div class="product_name clearfix">
+            <a href="#"><img src="{$v.simg}"  width="80px" height="80px"/></a>
+            <a href="3">{$v.sname}</a>
+            <p class="specification">{$v.unit}</p>
+            </div>
+            </td>
+             <td>{$v.a_price}</td>
+           <td>{$v.snum}</td>
+            </tr>
+			</foreach>
+            </table>          
+           </td>
+          
+           <td class="split_line">{$oprice}</td>
+           <td class="split_line">已下单,待付款</td>
+           <td><a href="__URL__/zhifubao/d/{$onumber}/p/{$oprice}/n/花果山特色馆" target="_blank">去付款</a></td>
+           </tr>
+           </tbody>
+         </table>
+       </div>
+       </div>
+     </div>

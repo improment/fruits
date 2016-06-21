@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="__PUBLIC__/css/css.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/common.css" rel="stylesheet" tyle="text/css" />
+<link href="__PUBLIC__/css/Orders.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/jquery.reveal.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/jquery.sumoselect.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/common_js.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/footer.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/jquery.jumpto.js" type="text/javascript"></script>
+<link rel="stylesheet" href="__PUBLIC__/css/theme.css" media="all">
+<title>确认订单界面</title>
+<script>
+jQuery(document).ready(function($) {
+	$('.theme-login').click(function(){
+		$('.theme-popover-mask').fadeIn(100);
+		$('.theme-popover').slideDown(200);
+	})
+	$('.theme-poptit .close').click(function(){
+		$('.theme-popover-mask').fadeOut(100);
+		$('.theme-popover').slideUp(200);
+	})
+
+})
+</script>
+</head>
+<!--顶部样式-->
+<?php 
+		include('./Application/Home/View/Public/header.html'); 
+	//echo file_get_contents('http://www.vegetable.com/__APP__/Home/public/header');
+
+ ?>
+<!---->
+<div><a href="#"><img src="__PUBLIC__/images/AD_page_img_02.png" width="100%"/></a></div>
+ <script type="text/javascript">
+        $(document).ready(function () {
+            window.asd = $('.SlectBox').SumoSelect({ csvDispCount: 3 });
+            window.test = $('.testsel').SumoSelect({okCancelInMulti:true });
+        });
+    </script>
+<body>
+<div class="Narrow">
+  <div class="shop_cart">
+<div class="schedule1"></div>
+<div class="theme-popover">
+     <div class="theme-poptit">
+          <a href="javascript:;" title="关闭" class="close">×</a>
+          <h3>添加地址</h3>
+     </div>
+     <div class="theme-popbod dform">
+           <form class="theme-signin" name="loginform" action="__URL__/add_address" method="post">
+                <ol>
+                     <li><strong>收货人：</strong><input class="ipt" type="text" name="aname"  size="20" /></li>
+                     <li><strong>电子邮箱：</strong><input class="ipt" type="text" name="aemail"  size="20" /></li>
+					 <li><strong>详细地址：</strong><input class="ipt" type="text" name="address"  size="20" /></li>
+					 <li><strong>邮政编码：</strong><input class="ipt" type="text" name="bianma"  size="20" /></li>
+					 <li><strong>联系方式：</strong><input class="ipt" type="text" name="tel"  size="20" /></li>
+                     <li><input class="btn btn-primary" type="submit" name="submit" value=" 新 增 " /></li>
+                </ol>
+           </form>
+     </div>
+</div>
+
+<div id="Orders" class="Inside_pages  clearfix">
+  <div class="Orders_style clearfix">
+     <div class="address clearfix">
+       <div class="title">收货人信息</div>
+          <div class="adderss_list clearfix">
+            <div class="title_name">选择收货地址 <a href="#" class="btn btn-primary btn-large theme-login">+添加地址</a></div>
+             <div class="list" id="select">
+			 
+			<ul class="confirm active" onclick="xuanz({$aid})">
+            <div class="default">默认地址</div>
+            <div class="adderss_operating">
+             <div class="Operate"><a href="#" class="delete_btn"></a> <a href="#" class="modify_btn"></a></div>
+            </div>
+            <div class="user_address">
+            <li>{$aname}</li>
+            <li>{$address}</li>
+            <li class="Postcode">{$bianma}</li>      
+            <li>{$tel}</li>
+            </div>
+            </ul>
+			<foreach name="ads" item="v">
+			<ul class="" onclick="xuan({$v.aid})">
+              <div class="adderss_operating">
+             <div class="Operate"><a href="#" class="delete_btn"></a> <a href="#" class="modify_btn"></a></div>
+            </div>
+             <div class="user_address">
+            <li>{$v.aname}</li>
+            <li>{$v.address}</li>
+            <li class="Postcode">{$v.bianma}</li>
+            <li>{$v.tel}</li>
+            </div>
+            </ul>
+			</foreach>
+            </div>
+           </div>
+        <!--收货地址样式-->
+     </div> 
+        
+     	<form class="form" method="post"> 
+<input type="hidden" value="" id="adsss">		
+		<fieldset> 
+     <!--快递选择-->
+     <div class="express_delivery">
+       <div class="title_name">选择快递方式</div>
+    
+        <ul class="dowebok">
+		<foreach name="exp" item="v">
+	    <li><input type="radio" name="express" data-labelauty="{$v.kname}" value="{$v.kno}">
+          <div class="description">
+           <em class="arrow"></em>
+           <p>{$v.kdesc}</p>
+           <p>资费：<span id="money">{$v.kmoney}</span>元</p>
+           <p class="Note">包邮</p>
+          </div>
+        </li>
+		</foreach>
+        </ul>       
+      
+     </div>
+    
+     <!--付款方式-->
+     <div class="payment">
+      <div class="title_name">支付方式</div>
+       <ul>
+        <li><input type="radio" name="zhifu" data-labelauty="支付宝" value="支付宝"></li>
+       </ul>
+     </div>
+     <!--产品列表-->
+     <div class="Product_List">
+      <table>
+       <thead><tr class="title"><td class="name">商品名称</td><td class="price">商品价格</td><td class="Preferential">优惠价</td><td class="Quantity">购买数量</td><td class="Money">金额</td></tr></thead>
+       <tbody>
+	   <foreach name="cards" item="v">
+       <tr>
+        <td class="Product_info">
+         <a href="#"><img src="{$v.simg}"  width="100px" height="100px"/></a>
+         <a href="#" class="product_name">{$v.sname}</a>
+         </td>
+        <td><i>￥</i>{$v.sprice}</td>
+        <td><i>￥</i>{$v.a_price}</td>
+        <td>{$v.snum}</td>
+        <td class="Moneys"><i>￥</i>{$v.zongjia}</td>
+       </tr>
+	   </foreach>
+       </tbody>
+      </table>
+      <div class="Pay_info">
+       <label>订单留言</label><input id="content" type="text"  onkeyup="checkLength(this);" class="text_name " />  <span class="wordage">剩余字数：<span id="sy" style="color:Red;">50</span></span>  
+      </div>
+      <!--价格-->
+      <div class="price_style">
+      <div class="right_direction">
+        <ul>
+         <li><label>商品总价</label><i>￥</i><span>{$yuanjia}</span></li>
+         <li><label>优惠金额</label><i>￥</i><span>-<?php echo $yuanjia-$zongjia?></span></li>
+         <li><label>配&nbsp;&nbsp;送&nbsp;&nbsp;费</label><i>￥</i><span>0</span></li>
+         <li class="shiji_price"><label>实&nbsp;&nbsp;付&nbsp;&nbsp;款</label><i>￥</i><span id="zongjia">{$zongjia}</span></li>    
+        </ul>   
+        <div class="btn"><input name="submit" type="button" value="提交订单" class="submit_btn" onclick="tijiao()"/> <input name="" type="button" value="返回购物车"  class="return_btn"/></div>
+         <div class="integral right">待订单确认后，你将获得<span>{$zongjia}</span>积分</div>
+      </div>
+      </div>
+     </div>  
+     </fieldset>
+        </form>
+		</div>
+</div>
+  </div>
+</div>
+</div>
+<div style="margin-bottom:100px"></div>
+<!--底部样式-->
+<?php include('./Application/Home/View/Public/footer.html'); ?>
+<script type="text/javascript">
+function checkLength(which) {
+	var maxChars = 50; //
+	if(which.value.length > maxChars){
+		alert("您出入的字数超多限制!");
+		// 超过限制的字数了就将 文本框中的内容按规定的字数 截取
+		which.value = which.value.substring(0,maxChars);
+		return false;
+	}else{
+		var curr = maxChars - which.value.length; //250 减去 当前输入的
+		document.getElementById("sy").innerHTML = curr.toString();
+		return true;
+	}
+}
+</script>
+<script>
+$(function(){
+	$(':input').labelauty();
+});
+function xuan(id){
+$("#adsss").attr('value',id);
+}
+function xuanz(id){
+$("#adsss").attr('value',id);
+}
+function tijiao(){
+var addid=$("#adsss").val();
+var kuaidi=$('input[name="express"]:checked ').val();
+var zhifu=$('input[name="zhifu"]:checked ').val();
+var content=$('#content').val();
+var zongjia=$('#zongjia').html();
+//alert(kuaidi)
+//alert(i)
+$.post(
+         "__URL__/add_dingdan",
+         {zongjia:zongjia,address:addid,kuaidi:kuaidi,zhifu:zhifu,content:content},
+          function (data) {
+		      //alert(data);
+			  $(".Narrow").html(data);
+           }
+     )
+}
+</script>
+
+<!--底部样式-->
+
+</body>
+</html>

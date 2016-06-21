@@ -2,62 +2,38 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="css/css.css" rel="stylesheet" type="text/css" />
-<link href="css/common.css" rel="stylesheet" type="text/css" />
-<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery.min.1.8.2.js" type="text/javascript"></script>
-<script src="js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/slide.js"></script>
-<script src="js/common_js.js" type="text/javascript"></script>
-<script src="js/jquery.foucs.js" type="text/javascript"></script>
+<link href="__PUBLIC__/css/css.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/common.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/js/jquery.min.1.8.2.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/slide.js"></script>
+<script src="__PUBLIC__/js/common_js.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/jquery.foucs.js" type="text/javascript"></script>
 <title>用户中心</title>
+<style>
+.image{
+width:43px;
+height:43px;
+border-radius:50px;
+} 
+.bigimg{
+width:83px;
+height:83px;
+border-radius:80px;
+} 
+</style>
 </head>
 
 <body>
 <!--顶部样式-->
-<div class="top_header">
-<em class="left_img"></em>
-<div class="header clearfix" id="header">
-<a href="#" class="logo_img"><img src="images/logo.png" /></a>
-<div class="header_Section">
- <div class="shortcut">
-  <ul>
-   <li  class="hd_menu_tit"><em class="login_img"></em><a href="#">登录</a></li>
-   <li  class="hd_menu_tit"><em  class="registered_img"></em><a href="#">注册</a></li>
-   <li  class="hd_menu_tit"><em class="Collect_img"></em><a href="#">收藏夹</a></li>
-   <li  class="hd_menu_tit"><em class="cart_img"></em><a href="#">购物车（0）</a></li>
-   <li  class="hd_menu_tit list_name" data-addclass="hd_menu_hover"><a href="#">网站导航</a><em class="navigation_img"></em>
-     
-    <div class="hd_menu_list">
-     <span class="wire"></span>
-		   <ul>
-		    <li><a href="#">常见问题</a></li>
-			<li><a href="#">在线退换货</a></li>
-		    <li><a href="#">在线投诉</a></li>
-			<li><a href="#">配送范围</a></li>
-		   </ul>
-		</div>	
-   </li>
-  </ul>
- </div>
- <div class="nav" id="Navigation">
-  <ul class="Navigation_name"> 
-   <li class=""><a herf="#">首页</a></li>
-   <li class=""><a herf="#">所有果蔬</a></li>
-   <li class=""><a herf="#">活动专区</a></li>
-   <li class=""><a herf="#">水果馆</a></li>
-   <li class=""><a herf="#">素菜馆</a></li>
-   <li class=""><a herf="#">会员中心</a></li>
-   <li class=""><a herf="#">联系我们</a></li>
-  </ul>
- </div>
- <script>$("#Navigation").slide({titCell:".Navigation_name li"});</script>
-</div>
-</div>
-<em class="right_img"></em>
-</div>
+<?php 
+		include('./Application/Home/View/Public/header.html'); 
+	//echo file_get_contents('http://www.vegetable.com/__APP__/Home/public/header');
+
+ ?>
 <!---->
-<div><a href="#"><img src="images/AD_page_img_02.png" width="100%"/></a></div>
+<div><a href="#"><img src="__PUBLIC__/images/AD_page_img_02.png" width="100%"/></a></div>
 <!--位置-->
 <div class="Bread_crumbs">
  <div class="Inside_pages clearfix">
@@ -74,18 +50,13 @@
   <div class="clearfix user" >
     <div class="user_left">
       <div class="user_info">
-       <div class="Head_portrait"><img src="images/product_img_17.png"  width="80px" height="80px"/><!--头像区域--></div>
-       <div class="user_name">用户蜜甘草<a href="#">[个人资料]</a></div>
+       <div class="Head_portrait"><img src="../../../<?php echo $uhead?>"  width="80px" height="80px" class="bigimg"/><!--头像区域--></div>
+       <div class="user_name"><?php echo $unickname?><a href="#">[个人资料]</a></div>
       </div>
       <ul class="Section">
-       <li><a href="#"><em></em><span>我的特色馆</span></a></li>
-       <li><a href="#"><em></em><span>个人信息</span></a></li>
-       <li><a href="#"><em></em><span>修改密码</span></a></li>
-       <li><a href="#"><em></em><span>我的订单</span></a></li>
-       <li><a href="#"><em></em><span>我的评论</span></a></li>
-       <li><a href="#"><em></em><span>我的积分</span></a></li>
-       <li><a href="#"><em></em><span>我的收藏</span></a></li>
-       <li><a href="#"><em></em><span>收货地址管理</span></a></li>
+       <li><a href="__URL__/user_info"><em></em><span>个人信息</span></a></li>
+       <li><a href="__URL__/my_dingdan"><em></em><span>我的订单</span></a></li>
+       <li><a href="__URL__/address"><em></em><span>收货地址管理</span></a></li>
       </ul>
     </div>
     <div class="user_right">
@@ -94,21 +65,94 @@
         <span class="name">个人信息设置</span>
        </div>
        <div class="about_user_info">
-       <form id="form1" name="form1" method="post" action="">   
+       <form id="form1" name="form1" method="post" action="__URL__/user_ziliao" enctype="multipart/form-data">   
        <div class="user_layout">
          <ul >
-          <li><label class="user_title_name">用户头像：</label></li>
-          <li><label class="user_title_name">用户昵称：</label><input name="" type="text"  class="add_text"/><em>*</em></li>
-          <li><label class="user_title_name">真实姓名：</label><input name="" type="text"  class="add_text"/><em>*</em></li>
-          <li><label class="user_title_name">用户性别：</label>               
-                <label class="sex"> <input type="radio" name="RadioGroup1" value="1" id="RadioGroup1_0" /><span>男</span></label>
-                <label class="sex"><input type="radio" name="RadioGroup1" value="2" id="RadioGroup1_1" /><span>女</span></label> 
-                <em>*</em>         
+		 <!--用户头像开始-->
+          <?php if($uhead==''){
+		  ?>
+		  <li><label class="user_title_name">用户头像：</label><input type="file" name="file"></li>
+		 <?php }else{
+		 ?>
+		 <li><label class="user_title_name">用户头像：</label><img src="../../../<?php echo $uhead ?>" alt="" class="image"></li>
+		 <?php  }?>
+		 <!--用户头像结束-->
+		 
+		 <!--用户昵称开始-->
+		 <?php if($unickname==''){
+		  ?>
+		  <li><label class="user_title_name">用户昵称：</label><input name="unickname" type="text"  class="add_text" /></li>
+		 <?php }else{
+		 ?>
+		 <li><label class="user_title_name">用户昵称：</label><input name="" type="text"  class="add_text" value="<?php echo $unickname?>" disabled/></li>
+		 <?php  }?>
+		  <!--用户昵称结束-->
+		  <!--用户姓名开始-->
+		 <?php if($uname==''){
+		  ?>
+		  <li><label class="user_title_name">真实姓名：</label><input name="uname" type="text"  class="add_text" /></li>
+		 <?php }else{
+		 ?>
+		 <li><label class="user_title_name">真实姓名：</label><input name="" type="text"  class="add_text" value="<?php echo $uname?>" disabled/></li>
+		 <?php  }?>
+		 <!--用户昵称结束-->
+          <!--用户性别开始-->
+		  <?php if($usex==''){
+		  ?>
+		<li><label class="user_title_name">用户性别：</label>               
+                <label class="sex"> <input type="radio" name="usex" value="男" id="RadioGroup1_0" /><span>男</span></label>
+                <label class="sex"><input type="radio" name="usex" value="女" id="RadioGroup1_1" /><span>女</span></label>         
           </li>
-          <li><label class="user_title_name">手&nbsp;机&nbsp;号：</label><input name="" type="text"  class="add_text"/><em>*</em></li>
-          <li><label class="user_title_name">邮箱地址：</label><input name="" type="text"  class="add_text"/><em>*</em></li>         
+		 <?php }else{
+		 ?>
+		  <li><label class="user_title_name">用户性别：</label> 
+			<?php if($usex=='男'){
+			?>
+			<label class="sex"> <input type="radio" name="RadioGroup1" value="<?php echo $usex?>" id="RadioGroup1_0" checked/><span><?php echo $usex?></span></label>  
+			<?php
+			}else{
+			?>
+			<label class="sex"> <input type="radio" name="RadioGroup1" value="<?php echo $usex?>" id="RadioGroup1_0" checked/><span><?php echo $usex?></span></label>  
+			<?php
+			}?>
+                         
+          </li>
+		 
+		 <?php  
+		 }?>
+		  
+		   <!--用户性别结束-->
+		   
+         <!--用户手机号开始-->
+		 <?php if($uphone==''){
+		  ?>
+		  <li><label class="user_title_name">手&nbsp;机&nbsp;号：</label><input name="uphone" type="text"  class="add_text" /></li>
+		 <?php }else{
+		 ?>
+		 <li><label class="user_title_name">手&nbsp;机&nbsp;号：</label><input name="" type="text"  class="add_text" value="<?php echo $uphone?>" disabled/></li>
+		 <?php  }?>
+		 <!--用户手机号结束-->
+		 
+		 <!--用户邮箱开始-->
+		 <?php if($uemail==''){
+		  ?>
+		  <li><label class="user_title_name">邮箱地址：</label><input name="uemail" type="text"  class="add_text" /></li> 
+		 <?php }else{
+		 ?>
+		 <li><label class="user_title_name">邮箱地址：</label><input name="" type="text"  class="add_text" value="<?php echo $uemail?>" disabled/></li> 
+		 <?php  }?>
+		 <!--用户邮箱结束-->        
          </ul>
-         <div class="operating_btn"><input name="name" type="submit" value="提交"  class="submit—btn"/></div>
+		 <!--用户邮箱开始-->
+		 <?php if($uemail==''){
+		  ?>
+		  <div class="operating_btn"><input name="name" type="submit" value="提交"  class="submit—btn"/></div>
+		 <?php }else{
+		 ?>
+		 <div class="operating_btn"><input name="name" type="submit" value="提交"  class="submit—btn" disabled/></div>
+		 <?php  }?>
+		 <!--用户邮箱结束-->   
+         
          </div>
           </form>
        </div>
@@ -117,41 +161,6 @@
   </div>
 </div>
 <!--底部样式-->
-<div class="footer">
- <div class="footer_img_bg"></div>
- <div class="footerbox">
-  <div class="footer_info">
-    <div class="footer_left">
-     <a href="#"><img src="images/logo.png" /></a>
-     <p class="erwm">
-     <img src="images/erweim.png"  width="80px" height="80px"/>
-     <img src="images/erweim.png"  width="80px" height="80px"/>
-     <p>
-    </div>
-    <div class="helper_right clearfix">
-     <dl>
-      <dt><em class="guide"></em>新手指南</dt>
-      <dd><a href="#">注册新用户</a></dd>
-      <dd><a href="#">实名认证</a></dd>
-      <dd><a href="#">找回密码</a></dd>
-     </dl>
-     <dl>
-      <dt ><em class="h_about"></em>关于我们</dt>
-      <dd><a href="#">关于我们</a></dd>
-      <dd><a href="#">政策服务</a></dd>
-      <dd><a href="#">常见问题</a></dd>
-     </dl>
-     <dl>
-      <dt ><em class="h_conact"></em>联系我们</dt>
-      <dd><a href="#">联系我们</a></dd>
-      <dd><a href="#">在线客服</a></dd>
-     </dl>
-    </div>
-  </div>
- </div> 
- <div class=" Copyright ">
-   @2015 四川莆田特色馆版权所有 
- </div>
-</div>
+<?php include('./Application/Home/View/Public/footer.html'); ?>
 </body>
 </html>

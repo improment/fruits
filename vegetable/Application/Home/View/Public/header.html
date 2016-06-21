@@ -10,18 +10,21 @@
   ?>
   <li  class="hd_menu_tit"><em class="login_img"></em><a href='http://www.vegetable.com/index.php/Home/Login/index'>登录</a></li>
    <li  class="hd_menu_tit"><em  class="registered_img"></em><a href="http://www.vegetable.com/index.php/Home/Login/registered">注册</a></li>
+   <li  class="hd_menu_tit"><em class="Collect_img"></em><a href="javascript:void(0)" id="fav">收藏夹</a></li>
+    <li  class="hd_menu_tit list_name" data-addclass="hd_menu_hover"><a href="#">网站导航</a><em class="navigation_img"></em>
    <?php
   }else{
   ?>
   <li  class="hd_menu_tit"><em class="login_img"></em>[<?php echo $_SESSION['name']['unickname']?>]</li>
    <li  class="hd_menu_tit"><em  class="registered_img"></em><a href="http://www.vegetable.com/index.php/Home/Login/out">退出</a></li>
+    <li  class="hd_menu_tit"><em class="Collect_img"></em><a href="javascript:void(0)" id="fav">收藏夹</a></li>
+   <li  class="hd_menu_tit"><em class="cart_img"></em><a href="http://www.vegetable.com/index.php/Home/active/shopping_cart">购物车（<?php echo $_COOKIE['k']?>）</a></li>
+   <!-- <li  class="hd_menu_tit list_name" data-addclass="hd_menu_hover"><a href="#">网站导航</a><em class="navigation_img"></em>-->
   <?php }?>
    
-   <li  class="hd_menu_tit"><em class="Collect_img"></em><a href="javascript:void(0)" id="fav">收藏夹</a></li>
-   <li  class="hd_menu_tit"><em class="cart_img"></em><a href="#">购物车（0）</a></li>
-   <li  class="hd_menu_tit list_name" data-addclass="hd_menu_hover"><a href="#">网站导航</a><em class="navigation_img"></em>
+   
      
-    <div class="hd_menu_list">
+   <!--  <div class="hd_menu_list">
      <span class="wire"></span>
 		   <ul>
 		    <li><a href="#">常见问题</a></li>
@@ -30,17 +33,16 @@
 			<li><a href="#">配送范围</a></li>
 		   </ul>
 		</div>	
-   </li>
+   </li> -->
   </ul>
  </div>
  
  <div class="nav" id="Navigation">
   <ul class="Navigation_name"> 
    <li class=""><a href='http://www.vegetable.com' __taget='self'>首页</a></li>
-   <li class=""><a href='http://www.vegetable.com/index.php/Home/All/index'>所有果蔬</a></li>
+
    <li class=""><a href='http://www.vegetable.com/index.php/Home/Active/index'>活动专区</a></li>
    <li class=""><a href='http://www.vegetable.com/index.php/Home/Fruits/index'>水果馆</a></li>
-   <li class=""><a href='http://www.vegetable.com/index.php/Home/Vegetable/index'>素菜馆</a></li>
    
    <?php session_start(); if(empty($_SESSION['name'])){
   ?>
@@ -49,7 +51,6 @@
   ?>
   <li class=""><a href='http://www.vegetable.com/index.php/Home/User/index'>会员中心</a></li>
   <?php }?>
-   <li class=""><a herf="http://www.vegetable.com/index.php/Home/Index/index">联系我们</a></li>
   </ul>
  </div>
  <script>$("#Navigation").slide({titCell:".Navigation_name li"});</script>

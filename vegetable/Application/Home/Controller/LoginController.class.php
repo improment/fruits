@@ -52,12 +52,69 @@ class LoginController extends Controller {
 		//print_r($info);die;
 		if($info){
 			session('name',$info);
+			$u_id=$_SESSION['name']['uid'];
+			$Model = new \Think\Model();
+			$cart = M("cart");
+			$cookie_cards=json_decode(cookie('cards'),true);
+			$cards=$Model->query("select * from cart where uid='$u_id'");
+			//print_r($cards);die;
+			$k=0;
+            $k=count($cards);
+			cookie('k',$k);
+			if(empty($cookie_cards)){
+			$cards=$Model->query("select * from cart where uid='$u_id'");
+			$k=count($cards);
+			cookie('k',$k);
 			$this->success("登录成功",__APP__.'/Home/index/index');
+			
+		
+			}else{
+			//echo $k;die;
+            $flag=0;
+            if($k>0){
+					$ssid='';
+					for($i=0;$i<count($cookie_cards);$i++){
+						$ssid.=$cookie_cards[$i]['sid'].',';
+					}
+					//echo $ssid;die;
+					$len=strrpos($ssid,',');
+					$new_str=substr($ssid,0,$len);
+					$Model->execute("delete from cart where sid in($new_str) and uid=$u_id"); 
+					for($i=0;$i<count($cookie_cards);$i++){
+					   $cookie_cards[$i]['uid']=$u_id;
+					   $sql = $cart->fetchSql(true)->add($cookie_cards[$i]);
+					   $Model->execute($sql);
+					 
+					 }
+					   cookie('cards',null);
+						$flag=1;				
+                }
+
+				//cookie('cards',null);
+				 
+				 
+            
+            if($flag==0){
+				
+				//print_r($data);die;
+               for($i=0;$i<count($cookie_cards);$i++){
+			   $cookie_cards[$i]['uid']=$u_id;
+			   $sql = $cart->fetchSql(true)->add($cookie_cards[$i]);
+			   $Model->execute($sql);
+			   }
+			   cookie('cards',null);
+            }
+			$cards=$Model->query("select * from cart where uid='$u_id'");
+			$a=count($cards);
+			cookie('k',$a);
+			$this->success("登录成功",__APP__.'/Home/index/index');
+			}
 		}else{
 			$this->error('账号密码错误');
 		}
-		
 	}
+		
+	
 	//用户退出
 	function out(){
 		session('name',null); 

@@ -40,7 +40,7 @@
      <div class="cart_style">
        <div class="title_name">
         <ul>
-         <li class="title_width"><label class="auto-label"><input type="checkbox" id="rememberMe"><span>全选</span></label></li>
+         
          <li class="title_width1">商品信息</li>
          <li class="title_width2">单价</li>
          <li class="title_width3">数量</li>
@@ -52,7 +52,7 @@
         <div class="class_title">花果山特色馆</div>
 		<foreach name="cookie" item="v">
 		<ul class="product_cart">
-         <li class="title_width"><input type="checkbox" id="rememberMe"></li>
+         
          <li class="title_width1">
          <a href="#" class="product_img left"><img src="{$v.simg}" id="simg_{$v.sid}"/></a>
          <p class="cart_content">
@@ -80,6 +80,13 @@
 $('#jian_{$v.sid}').click(function(){
 		num=$('#number_{$v.sid}').val();
 		price=$("#price_{$v.sid}").html();
+		var sname=$("#title_name_{$v.sid}").html();
+		var a_price=$("#price_{$v.sid}").html();
+		var unit=$("#unit_{$v.sid}").html();
+		var sprice=$("#sprice_{$v.sid}").html();
+		var yzongjia=$("#yzongjia_{$v.sid}").html();
+		var sid=$("#sid_{$v.sid}").html();
+		var simg=$("#simg_{$v.sid}").attr('src');
 		//alert(price);
 		//alert(num);
 		zongj=$("#zongj").html();
@@ -91,9 +98,17 @@ $('#jian_{$v.sid}').click(function(){
 			//alert(sid);
 			zong=num*price;
 			numprice=zongj-price;
+			yzj=num*sprice;
 			$('#number_{$v.sid}').val(num);
 			$('#xiaoji_{$v.sid}').html(zong);
 			$("#zongj").html(numprice);
+			$.post(
+                     "__URL__/floww",
+                    {sid:sid,zongjia:zong,sname:sname,snum:num,a_price:a_price,simg:simg,unit:unit,sprice:sprice,yzongjia:yzj},
+					function (data) {
+					
+                    }
+            )
 		}
 	});
 	$('#jia_{$v.sid}').click(function(){
@@ -124,7 +139,7 @@ $('#jian_{$v.sid}').click(function(){
                      "__URL__/floww",
                     {sid:sid,zongjia:zong,sname:sname,snum:num2,a_price:a_price,simg:simg,unit:unit,sprice:sprice,yzongjia:yzj},
 					function (data) {
-					alert(data);
+					
                     }
             )
 		}
@@ -140,7 +155,7 @@ $('#jian_{$v.sid}').click(function(){
      <div class="cart_operating clearfix">
         <div class="cart_operating_style">
            <div class="cart_price">商品总价：（不含运费）<b>￥</b><b id="zongj">{$zongjia}</b></div>
-           <div class="cart_btn"><a href="#" class="payment_btn"></a><a href="#" class="continue_btn"></a></div>
+           <div class="cart_btn"><a href="__URL__/fukuan" class="payment_btn"></a><a href="__URL__/index" class="continue_btn"></a></div>
         </div>
      </div>
   </div>
