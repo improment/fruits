@@ -145,7 +145,9 @@
 														$imgs=explode('|',$v['simg']);
 														$img=$imgs['0'];
 														?>
+														<a href="<?php echo base_url('public/uploads')?>/<?php echo $img ?>" title="Photo Title" data-rel="colorbox">
 															<img height="50px" width="50px" src="<?php echo base_url('public/uploads')?>/<?php echo $img ?>">
+														</a>
 														</td>
 														<td><?php echo $v['sprice'] ?></td>
 														<td><?php echo $v['snum'] ?></td>
@@ -176,6 +178,10 @@
 
 												</tbody>
 											</table>
+
+										<div class="page">
+<center><?php echo $pagestr; ?></center>
+</div>
 											<button class="btn btn-app btn-danger btn-sm">批量删除</button>
 										</div><!-- /.table-responsive -->
 									</div><!-- /span -->

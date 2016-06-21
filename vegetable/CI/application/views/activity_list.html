@@ -127,11 +127,11 @@
 															?>
 															<img height="50px" width="50px" src="<?php echo base_url('public/uploads')?>/<?php echo $img ?>" >
 														</td>
-														<td class="hidden-480"><?php echo $v['start_time'] ?></td>
-														<td class="hidden-480"><?php echo $v['end_time'] ?></td>
+														<td class="hidden-480"><?php echo date("Y-m-d H:i:s",time($v['start_time'])) ?></td>
+														<td class="hidden-480"><?php echo date("Y-m-d H:i:s",time($v['end_time'])) ?></td>
 														<td>
 															<?php
-																if($v['status']==1){
+																if($v['astatus']==1){
 																	echo "<a href=''>禁用</a>";
 																}else{
 																	echo "<a href=''>开启</a>";
@@ -162,6 +162,7 @@
 
 												</tbody>
 											</table>
+											<center><?php echo $pagestr; ?></center>
 											<button class="btn btn-app btn-danger btn-sm">批量删除</button>
 										</div><!-- /.table-responsive -->
 									</div><!-- /span -->

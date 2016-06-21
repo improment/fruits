@@ -69,7 +69,7 @@ $jz=$this->session->userdata('jz');
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<img class="nav-user-photo" src="<?php echo base_url('public')?>/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
-									<small>欢迎登录,</small>
+									<small>欢迎登录</small>
 									<?php echo $jz['username'] ?>
 								</span>
 
@@ -172,6 +172,29 @@ $jz=$this->session->userdata('jz');
 							</ul>
 						</li>
 
+						<li>
+							<a href="#" class="dropdown-toggle">
+								<i class="icon-camera-retro"></i>
+								<span class="menu-text"> 轮播图管理 </span>
+
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu">
+								<li>
+									<a href="<?php  echo site_url('Photo/Photolist') ?>">
+										<i class="icon-double-angle-right"></i>
+										轮播图管理
+									</a>
+								</li>
+								<li>
+									<a href="<?php  echo site_url('Photo/index') ?>">
+										<i class="icon-double-angle-right"></i>
+										新增轮播图
+									</a>
+								</li>
+							</ul>
+						</li>
 
 						
 						<li>
@@ -200,7 +223,7 @@ $jz=$this->session->userdata('jz');
 						
 						<li>
 							<a href="#" class="dropdown-toggle">
-								<i class="icon-calendar"></i>
+								<i class="icon-time bigger-110 hidden-480"></i>
 								<span class="menu-text"> 活动管理 </span>
 
 								<b class="arrow icon-angle-down"></b>
@@ -241,12 +264,6 @@ $jz=$this->session->userdata('jz');
 						</li>
 
 
-						<li>
-							<a href="<?php echo site_url('Main/gallery') ?>">
-								<i class="icon-picture"></i>
-								<span class="menu-text"> 相册 </span>
-							</a>
-						</li>
 
 						<li>
 							<a href="#" class="dropdown-toggle">

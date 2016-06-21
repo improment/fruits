@@ -24,11 +24,24 @@ class User extends CI_Model {
     }
 
     /*查询商品*/
-    public function Goodslist()
+    public function Goodslist($per_page,$page)
     {
-        $query = $this->db->get('shop')->result_array();
+        $query = $this->db
+        ->limit($per_page,$page)
+        ->get('shop')
+        ->result_array();
         return $query; 
     }
+    
+    /*查询商品*/
+    public function Goodslists()
+    {
+        $query = $this->db
+        ->get('shop')
+        ->result_array();
+        return $query; 
+    }
+
 
     /*用户查询*/
     public function Userlist()
@@ -54,11 +67,13 @@ class User extends CI_Model {
     }
 
     /*订单查询*/
-    public function Orderlist()
+    public function Orderlist($per_page,$page)
     {
         $data=$this->db->from('orders')
+        ->limit($per_page,$page)
         ->join('user','user.uid=orders.uid')
-        ->join('shop','shop.sid=orders.sid')
+        ->join('order_mess','order_mess.oid=orders.oid')
+        //->join('shop','shop.sid=orders.sid')
         ->get()
         ->result_array();
         return $data;
@@ -99,10 +114,11 @@ class User extends CI_Model {
     }
 
     /*活动列表*/
-    public function Activitylist()
+    public function Activitylist($per_page,$page)
     {
         $query = $this->db->from('activity')
         ->join('shop','shop.sid=activity.sid')
+        ->limit($per_page,$page)
         ->get()
         ->result_array();
         return $query;
@@ -112,5 +128,29 @@ class User extends CI_Model {
     public function Activityadd($data)
     {
         return $this->db->insert('activity', $data);    
+    }
+
+    /*轮播管理*/
+    public function Photolist()
+    {
+        return $this->db->get('lunbo')->result_array();    
+    }
+
+    /*增加轮播*/
+    public function Photoadd($sid,$ljs)
+    {
+        $row=$this->db->get_where('shop', array('sid' => $sid))->row();
+        $img=explode('|',$row->simg);
+        $limg=$img[0];
+        $bool=$this->db->insert('lunbo',array('limg'=>$limg,'lstatus'=>1,'sid'=>$sid,'ljs'=>$ljs));
+        return $bool;
+    }
+
+    /*轮播图删除*/
+    public function Photodel($id)
+    {
+        $this->db->where_in('lid',$id);
+        $bool=$this->db->delete('lunbo'); //执行删除
+        return $bool;
     }
 }
