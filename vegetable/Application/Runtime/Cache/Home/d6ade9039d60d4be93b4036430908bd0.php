@@ -46,8 +46,7 @@
        </div>
        <div class="list_style">
         <div class="class_title">水果馆</div>
-         <?php foreach($cart as $k=>$vo) {?>
-         <ul class="product_cart">
+          <?php if(is_array($cart)): foreach($cart as $key=>$vo): ?><ul class="product_cart">
          <li class="title_width"><input type="checkbox" id="rememberMe"></li>
          <li class="title_width1">
          <a href="#" class="product_img left"><img src="../../../CI/public/uploads/<?php echo $vo['simg']?>" /></a>
@@ -60,14 +59,19 @@
          <li class="title_width3">
            <div class="Numbers">
 		  <a href="javascript:void(0);" class="cli">-</a>
-		  <input id="number" name="number" type="text" value="1" class="number_text">
+		  <input id="number" name="number" type="text" value="<?php echo $vo['number']?>" class="number_text">
 		  <a href="javascript:void(0);" class="jia">+</a>
 		 </div>        
          </li>
          <li class="title_width4">￥<?php echo $vo['zongjia']?></li>
          <li class="title_width5"><a href="#">删除</a></li>
          </ul>
-         <?php }?>
+         <script>
+              $(".jia").click(function(){
+                      number = $(".number_text").attr('value');
+                      alert(number);
+              })
+        </script><?php endforeach; endif; ?>
        </div>
      <!--操作-->
      <div class="cart_operating clearfix">
@@ -83,16 +87,3 @@
  include("./Application/Home/View/Public/footer.html"); ?>
 </body>
 </html>
-<script>
-         $(document).click(".jia",function(){
-             var number = $("#number").val();
-                     if(number>=100)
-                   {
-                         $("#number").val(number);
-                   }else{
-                      number = parseInt(number)+1;
-                      $("#number").val(number);
-                     //alert(number)
-                   }
-         })
-</script>
