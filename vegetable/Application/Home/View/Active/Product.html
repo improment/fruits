@@ -54,13 +54,13 @@ body{margin:20px;}
    <div class="ranking">
     <div class="ranking_title"><span>销量</span>排行</div>
     <ul class="ranking_list">
-	 <foreach name="are" item="v" key="k" >
+	 <foreach name="are" item="a" key="k" >
      <li class="">
      <em class="ranking_label">{$k+1}</em>
-     <a href="#" class="img"> <img src="../../../../../CI/public/uploads/<?php $info=explode('|',$v['simg']); echo $info[2]?>" width="100px" height="100px" /></a>
-     <p class="ranking_name">{$v.sname}</p>
-     <p class="price"><b>￥</b>{$v.a_price}</p>
-     <p><a href="__APP__/home/active/product/id/{$v.aid}">立即查看< </a></p>
+     <a href="#" class="img"> <img src="../../../../../CI/public/uploads/<?php $info=explode('|',$a['simg']); echo $info[2]?>" width="100px" height="100px" /></a>
+     <p class="ranking_name">{$a.sname}</p>
+     <p class="price"><b>￥</b>{$a.a_price}</p>
+     <p><a href="__APP__/home/active/product/id/{$a.aid}">立即查看< </a></p>
      </li>
 	 </foreach>
     </ul>

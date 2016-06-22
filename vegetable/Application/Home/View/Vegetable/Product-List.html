@@ -48,7 +48,7 @@
 	<foreach name="arr" item="v" key="k" >
      <li class="">
      <em class="ranking_label">{$k+1}</em>
-     <a href="__PUBLIC__/#" class="img"> <img src="../../../CI/public/uploads/<?php $info=explode('|',$v['simg']); echo $info[1]?>" width="100px" height="100px" /></a>
+     <a href="__APP__/home/active/product/id/{$v.aid}" class="img"> <img src="../../../CI/public/uploads/<?php $info=explode('|',$v['simg']); echo $info[1]?>" width="100px" height="100px" /></a>
      <p class="ranking_name">{$v.sname}</p>
      <p class="price"><b>￥</b>{$v.sprice}</p>
      <p><a href="__APP__/home/active/product/id/{$v.aid}">立即查看< </a></p>
@@ -62,8 +62,8 @@
 	<foreach name="arr" item="v" key="k" >
      <li class="clearfix">
        <div class="product_lists clearfix">
-        <a href="__PUBLIC__/#" class="Collect"></a>
-        <a href="__PUBLIC__/#"><img src="../../../CI/public/uploads/<?php $info=explode('|',$v['simg']); echo $info[1]?>" width="208px" height="218px"/></a>
+        <a href="__APP__/home/active/product/id/{$v.aid}" class="Collect"></a>
+        <a href="__APP__/home/active/product/id/{$v.aid}"><img src="../../../CI/public/uploads/<?php $info=explode('|',$v['simg']); echo $info[1]?>" width="208px" height="218px"/></a>
         <p class="title_p_name">{$v.sname}</p>
         <p class="title_Profile">{$v.sdesc}</p>
         <p class="price"><b>￥</b>{$v.sprice}</p>

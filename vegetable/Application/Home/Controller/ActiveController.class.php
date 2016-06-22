@@ -6,10 +6,10 @@ class ActiveController extends Controller {
 	
     public function index(){
 		$activity=D('Activity');
-		$arr=$activity->two_sel("aid desc","state=1 and astatus=1",5);
+		$arr=$activity->two_sel("aid desc","state=1 and astatus=1 and type=0",5);
 		//print_r($arr);die;
-		$are=$activity->two_sel("aid desc","state=2 and astatus=1",1);
-		$are2=$activity->two_sel("aid desc","state=3 and astatus=1",4);
+		$are=$activity->two_sel("aid desc","state=2 and astatus=1 and type=0",1);
+		$are2=$activity->two_sel("aid desc","state=3 and astatus=1 and type=0",4);
 		$this->assign('are',$are);
 		$this->assign('are2',$are2);
 		$this->assign('arr',$arr);
@@ -27,8 +27,8 @@ class ActiveController extends Controller {
 		//print_r($ar);die;
 		unset($ar[count($ar)-1]);
 		$arr['simg']=implode('|',$ar);
-		$are=$activity->two_sel("sbuy desc","status=1",6);
-		//print_r($arr);die;
+		$are=$activity->two_sel("sbuy desc","status=1 and type!=0",6);
+		//print_r($are);die;
 		$this->assign('are',$are);
 		//print_r($are);die;
 		$this->assign($arr);
