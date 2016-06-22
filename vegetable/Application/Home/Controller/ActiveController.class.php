@@ -261,6 +261,9 @@ class ActiveController extends Controller {
 	//付款
 	public function fukuan(){
 		$u_id=$_SESSION['name']['uid'];
+		if(empty($u_id)){
+			$this->error("请先登录");
+		}else{
 		$address = D("address");
 		$express = D("express");
 		$Model = new \Think\Model();
@@ -284,6 +287,7 @@ class ActiveController extends Controller {
 		$this->assign($adss);
 		$this->assign('ads',$ads);
 		$this->display('Orders');
+		}
 	}
 	//新增收货地址
 	public function add_address(){
