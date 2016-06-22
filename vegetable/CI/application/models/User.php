@@ -23,6 +23,12 @@ class User extends CI_Model {
     	return $this->db->insert('shop', $data); 
     }
 
+    /*发布商品操作*/
+    public function Goodsbox()
+    {
+        return $this->db->get('shop_box')->result_array(); 
+    }
+
     /*查询商品*/
     public function Goodslist($per_page,$page)
     {

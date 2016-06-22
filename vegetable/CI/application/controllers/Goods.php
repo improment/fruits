@@ -15,7 +15,9 @@ class Goods extends CI_Controller {
 	/*主面*/
 	public function index()
 	{
-		$this->load->view('goods_form.html');
+		$this->load->model('User');	//引入model
+		$data['box']=$this->User->Goodsbox();
+		$this->load->view('goods_form.html',$data);
 	}
 
 	/*发布商品*/
