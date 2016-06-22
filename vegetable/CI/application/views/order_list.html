@@ -150,13 +150,13 @@
 
 														<td>
 															<div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-															<?php if($v['logistics']==false){ ?>
+															<?php if($v['kuaidinum']==false){ ?>
 																<button id="tjw"  onclick="tj(<?php echo $v['oid'] ?>)" class="btn btn-xs btn-info">
 																	添加物流单号
 																</button>
 															<?php 
 															}?>
-															<?php if($v['logistics']!=false){ ?>
+															<?php if($v['kuaidinum']!=false){ ?>
 																<button id="ckwl"  onclick="ckwl(<?php echo $v['oid'] ?>)" class="btn btn-xs btn-info">
 																	查看物流
 																</button>
@@ -219,14 +219,16 @@
 	//查看物流
 	function ckwl(id)
 	{
-		alert(id);
+		//alert(id);
 		$.ajax({
 			type:'post',
 			data:'id='+id,
 			url:'<?php echo site_url("Orders/Orderckwl") ?>',
 			success:function(msg)
 			{
-				alert(msg);
+				if (msg==1) {
+					alert("添加物流成功");
+				}
 			}
 		})
 	}

@@ -83,7 +83,7 @@ class User extends CI_Model {
     public function Orderwl($id,$wl)
     {
         $this->db->where('oid',$id);
-        $bool=$this->db->update('orders',array('logistics'=>$wl)); 
+        $bool=$this->db->update('orders',array('kuaidinum'=>$wl)); 
         return $bool;
     }
 
