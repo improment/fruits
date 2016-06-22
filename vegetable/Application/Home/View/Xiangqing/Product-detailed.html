@@ -334,7 +334,7 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
       </div>
       <div class="product_Quantity">销量：{$arr.sbuy}</div>
       <div class="operating">
-       <a href="__APP__/Home/Cart/index/sid/{$arr.sid}" class="buy_btn"></a>
+       <a href="javascript:void(0)" class="buy_btn"></a>
        <a href="javascript:void(0)" class="Join_btn" id="join" value="{$arr.sid}"></a>
        <a href="#" class="Collect_btn"></a>
       </div>
@@ -411,5 +411,26 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
              alert(msg)
          }
      })
+  })
+  
+  //立即购买
+  
+  $(".buy_btn").click(function(){
+     sid=$('.Join_btn').attr('value');
+     unit = $('.box').attr('title');
+     number = $("#number").val();
+     zongjia = $("#zhi").children().html();
+     price = $("#price").html();
+     //alert(price);
+     $.ajax({
+         type:'GET',
+         url:'../Cart/show',
+         data:"sid="+sid+"&unit="+unit+"&number="+number+"&zongjia="+zongjia+"&price="+price,
+         success:function(msg){
+               if(msg=='1'){
+                   location.href="__APP__/home/cart/carts";
+               }
+         }
+     }) 
   })
 </script>

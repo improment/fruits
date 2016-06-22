@@ -19,142 +19,171 @@ class CartController extends Controller
     //添加商品 （购物车）
     public function collection()
     { 
-      $id = I('get.sid');
-      $unit = I('get.unit');
-      $number = I('get.number');
-      $price = I('get.price'); 
-      $zongjia = I('get.zongjia'); 
-      $uname = session('name');
-     // print_R($uname);die;
+          $id = I('get.sid');
+          $unit = I('get.unit');
+          $number = I('get.number');
+          $price = I('get.price'); 
+          $zongjia = I('get.zongjia'); 
+          $uname = session('name');
+          //print_R($uname);die;
       if($uname['uid']=="")
       {
-         $result=json_decode(cookie('data'),true);  //改参数为true是 返回是数组不是对象
-         $flag=0;
-         if(is_array($result))
-         {
-            //判断商品是否存在
-             if(array_key_exists($id, $result)){
-                        $uu = $result[$id];
-                        $uu['number']=$uu['number']+$number;
-                        $uu['zongjia']=$uu['zongjia']+$zongjia;
-                        $result[$id]=$uu;
-                        $flag=1;
-              }else
-              {
-                    $result[$id]=array('sid'=>$id,'unit'=>$unit,'number'=>$number,'zongjia'=>$zongjia,'price'=>$price);
+             //用户没有登录商品存储在cookie中
+             $result=json_decode(cookie('data'),true);  //改参数为true是 返回是数组不是对象
+             $flag=0;
+             if(is_array($result))
+             {
+                //判断商品是否存在
+                         if(array_key_exists($id, $result)){
+                                    $uu = $result[$id];
+                                    $uu['number']=$uu['number']+$number;
+                                    $uu['zongjia']=$uu['zongjia']+$zongjia;
+                                    $result[$id]=$uu;
+                                    $flag=1;
+                          }else
+                          {
+                                $result[$id]=array('sid'=>$id,'unit'=>$unit,'number'=>$number,'zongjia'=>$zongjia,'price'=>$price);
+                          }
               }
-          }
-          if($flag==0)
-          {    
-              $result[$id]=array('sid'=>$id,'unit'=>$unit,'number'=>$number,'zongjia'=>$zongjia,'price'=>$price); 
-          }
-          cookie('data',json_encode($result),60*60*24*30);
-          echo "chenggong";
+              if($flag==0)
+              {    
+                  $result[$id]=array('sid'=>$id,'unit'=>$unit,'number'=>$number,'zongjia'=>$zongjia,'price'=>$price); 
+              }
+              cookie('data',json_encode($result),60*60*24*30);
+              echo "chenggong"; 
       }else
       {
-          $finally = cookie('data');
-          $uname = session('name');
-          if(!empty($finally))    //cookie存在
-          {
-              $result=json_decode($finally,true);
-              $trade = M('Trade');
-              $data = $trade->where("uid='".$uname['uid']."'")->find();
-              if(empty($data))   //cookie存在但数据库不存在数据
-              {
-                   $k = count($result);
-                   if($k>1)
-                   {
-                         for($i=1;$i<=$k;$i++)
-                         {
-                             $shop = M('Shop');
-                             $arr = $shop->where("sid=".$result[$k]['sid']."")->find();
-                             $result[$k]['sname']=$arr['sname'];
-                             $simg=explode("|",substr($arr['simg'],0,strripos($arr['simg'],"|")));
-                             $result[$k]['simg']=$simg['0'];
-                             $result[$k]['uid']=$uname['uid'];
-                             $trade->add($result[$k]);
+              //用户登录之后取出cookie数据入库
+                  $res[$id]= I("get.");
+              if(cookie('data')==""){
+                 //cookie 不存在
+                       $res[$id]['uid']=$uname['uid'];
+                       //print_R($res);die;
+                       $flag=0;
+                       $model = M('Trade');
+                       $len=count($res);
+                       if($len>0){
+                         $ids=$model->where("uid='".$uname['uid']."'")->select();
+                         foreach ($res as $k => $v) {
+                                  foreach($ids as $kk=>$vv)
+                                  {
+                                           if($vv['sid']==$v['sid']){
+                                               $data['num']=$vv['num']+$v['num'];
+                                                $data['zongjia']=$vv['zongjia']+$v['zongjia'];
+                                                $model->where("sid =".$v['sid']."")->setField($data);
+                                           }
+                                  }
                          }
-                   }else if($k==1)
-                   {  
-                             $shop = M('Shop');
-                             $arr = $shop->where("sid=".$result[$k]['sid']."")->find();
-                             $result[$k]['sname']=$arr['sname'];
-                             $simg=explode("|",substr($arr['simg'],0,strripos($arr['simg'],"|")));
-                             $result[$k]['simg']=$simg['0'];
-                             $result[$k]['uid']=$uname['uid'];
-                             //print_R($result[$k]);die;
-                             $trade->add($result[$k]);
-                   }
+                       }
+                       if($flag==0){
+                              $models = M('Shop');
+                              $shop = $models->where("sid=".$res[$id]['sid']."")->find();
+                              //print_R($shop);die;
+                              $img = explode("|",substr($shop['simg'],0,strrpos($shop['simg'],"|")));
+                             // print_R($res);die;
+                              foreach($res as $k=>$v)
+                              {
+                                 $res[$k]['simg']=$img[0];                              
+                                 $res[$k]['sname']=$shop['sname'];
+                                 $res[$k]['sprice']=$shop['sprice'];
+                                 $model->add($res[$k]);
+                                 echo chenggong2;
+                              }
+                              
+                       }
               }else
               {
-                  $k = count($result);
-                  $uid = $uname['uid'];
-                  //echo $uid;die;
-                  //cookie存在且数据库有数据
-                  if($k>1)
-                  {
-                            foreach($result as $k=>$v)
+                      //cookie存在
+                       $result=json_decode(cookie('data'),true); 
+                       $flag=0;
+                       $model = M('Trade');
+                       $arr = $model->where("uid=".$uname['uid']."")->select();
+                       $k=count($arr);
+                        if($k>0)
                         {
-                             $sid.=$result[$k]['sid'].",";
+                                for($i=1;$i<=$k;$i++){
+                                       $newid.=$arr[$i]['sid']."," ;
+                                }
+                                $newid = explode(",",substr($newid,0,strrpos($newid,",")));
+                                foreach($newid as $k=>$v){
+                                      $data['number']=$result[$k]['number']+$arr[$k]['number'];
+                                      $data['zongjia']=$result[$k]['zongjia']+$arr[$k]['zongjia'];
+                                      $model->where("sid =".$v."")->setField($data);
+                                }
+                                   cookie(null);       
                         }
-                        $sid = explode(",",substr($sid,0,strripos($sid,",")));
-                        //print_R($sid);
-                        $oldid= $trade->where("uid='".$uid."'")->getField('sid',true);  //如果希望返回多个结果则加true
-                        foreach($sid as $k=>$v)
+                        $flag=1;
+
+
+                  }
+                         if($flag==0)
                         {
-                              if($sid[$k]==$oldid[$k])
-                              {
-                                 $trade->where("sid=".$v['sid']." AND uid=".$uid."")->delete();
-                              }else
-                              {
-                                   for($i=1;$i<=count($k);$i++){
-                                       $trade->add($result[$k]);
-                                   }
-                              }
+                                 for($i=0;$i<count($result);$i++){
+                                         $result[$i]['uid']=$uname['uid'];
+                                         $model = M('Trade');
+                                         $model->add($result);
+                                 }
+                                 cookie(null);
                         }
-                  }else
-                  {
-                         foreach($result as $k=>$v)
-                        {
-                             $sid.=$result[$k]['sid'].",";
-                        }
-                        $sid = substr($sid,0,strripos($sid,","));
-                        $oldid= $trade->where("uid='".$uid."'")->getField('sid',true);
-                        foreach($oldid as $k=>$v)
-                        {
-                             if(in_array($sid,$oldid))
-                             {
-                                $trade->where("sid=".$v['sid']." AND uid=".$uid."")->delete(); 
-                             }else
-                             {
-                                 $trade->add($result[$k]);
-                             }
-                        }  
-                  }    
-              }
-          }else
-          {
-              $block = I('get.');
-              print_R($block);
-              $sid = $block['sid'];
-              $shop = M('Shop');
-              $arr = $shop->where("sid=".$sid."")->find();
-              $block['sname']=$arr['sname'];
-              $block['unit']=$arr['unit'];
-              $block['price']=$arr['price'];
-              $block['number']=$arr['number'];
-              $block['uid']=$arr['uid'];
-              $simg=explode("|",substr($arr['simg'],0,strripos($arr['simg'],"|")));
-              $block['simg']=$simg['0'];
-              $trade= M('Trade');
-              $trade->add($block);
-          }
       }
     } 
     
     //立即购买
      public function show()
      {
-         
+
+         header("content-type:text/html;charset=utf8");
+          $data = I("get.");
+          $uname= session('name');
+          $uid = $uname['uid'];
+         if(empty($uname))
+         {
+             echo '<script>alert("请先登录")</script>';
+             $this->redirect('Login/index',5, '页面跳转中...');
+         }else
+         {
+               //查询库中该商品是否存在
+              $model = M('Trade');
+              $arr = $model->where("uid=".$uid." AND sid =".$data['sid']."")->select();
+              $flag=0;
+              if(!empty($arr)){
+                  foreach($arr as $k=>$v){
+                          if($v['sid']==$data['sid']){
+                                     $last['number']=$v['number']+$data['number'];
+                                     $last['zongjia']=$v['zongjia']+$data['zongjia'];
+                                   //print_R($last);die;
+                                     $model->where("sid =".$v['sid']." AND uid=".$uid."")->setField($last);
+                          }
+                             $flag=1;
+                             $bear = $model->where("uid=".$uid."")->select();
+                             session('cart',$bear);
+                             echo 1;
+                }
+              }
+              if($flag==0){
+                   $models = M('Shop');
+                    $list = $models->where("sid =".$data['sid']."")->find();
+                   $data['uid']=$uid;
+                   $data['sname']=$list['sname'];
+                   $img = explode("|",substr($list['simg'],0,strrpos($list['simg'],"|")));
+                   $data['simg']=$img[0];
+                   $data['sprice']=$list['sprice'];
+                   $model->add($data);
+                   $bear = $model->where("uid=".$uid."")->select();
+                    session('cart',$bear);
+                   echo 1;
+              }
+
+         }
+        
      }
+
+
+           public function carts()
+           {
+                  header("content-type:text/html;charset=utf8");
+                  $cart = session('cart');
+                  $this->assign('cart',$cart);
+                  $this->display('shopping_cart');
+           }
 }

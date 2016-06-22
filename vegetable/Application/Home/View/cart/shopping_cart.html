@@ -49,91 +49,29 @@
        </div>
        <div class="list_style">
         <div class="class_title">水果馆</div>
+         <?php foreach($cart as $k=>$vo) {?>
          <ul class="product_cart">
          <li class="title_width"><input type="checkbox" id="rememberMe"></li>
          <li class="title_width1">
-         <a href="#" class="product_img left"><img src="__PUBLIC__/images/product_img_17.png" /></a>
+         <a href="#" class="product_img left"><img src="../../../CI/public/uploads/<?php echo $vo['simg']?>" /></a>
          <p class="cart_content">
-         <a href="#" class="title_name">浦江特产绿豌豆天然无污染</a>
-         <span> 礼盒装：20个装</span>
+         <a href="#" class="title_name"><?php echo $vo['sname']?></a>
+         <span> 礼盒装：<?php echo $vo['unit']?></span>
          </p>
          </li>
-         <li class="title_width2">￥23</li>
+         <li class="title_width2">￥<?php echo $vo['sprice']?></li>
          <li class="title_width3">
            <div class="Numbers">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jian">-</a>
+		  <a href="javascript:void(0);" class="cli">-</a>
 		  <input id="number" name="number" type="text" value="1" class="number_text">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jia">+</a>
+		  <a href="javascript:void(0);" class="jia">+</a>
 		 </div>        
          </li>
-         <li class="title_width4">￥545</li>
+         <li class="title_width4">￥<?php echo $vo['zongjia']?></li>
          <li class="title_width5"><a href="#">删除</a></li>
          </ul>
-         <ul class="product_cart">
-         <li class="title_width"><input type="checkbox" id="rememberMe"></li>
-         <li class="title_width1">
-         <a href="#" class="product_img left"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-         <p class="cart_content">
-         <a href="#" class="title_name">浦江特产绿豌豆天然无污染</a>
-         <span> 礼盒装：20个装</span>
-         </p>
-         </li>
-         <li class="title_width2">￥23</li>
-         <li class="title_width3">
-           <div class="Numbers">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jian">-</a>
-		  <input id="number" name="number" type="text" value="1" class="number_text">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jia">+</a>
-		 </div>        
-         </li>
-         <li class="title_width4">￥545</li>
-         <li class="title_width5"><a href="#">删除</a></li>
-         </ul>
+         <?php }?>
        </div>
-              <div class="list_style">
-        <div class="class_title">水果馆</div>
-         <ul class="product_cart">
-         <li class="title_width"><input type="checkbox" id="rememberMe"></li>
-         <li class="title_width1">
-         <a href="#" class="product_img left"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-         <p class="cart_content">
-         <a href="#" class="title_name">浦江特产绿豌豆天然无污染</a>
-         <span> 礼盒装：20个装</span>
-         </p>
-         </li>
-         <li class="title_width2">￥23</li>
-         <li class="title_width3">
-           <div class="Numbers">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jian">-</a>
-		  <input id="number" name="number" type="text" value="1" class="number_text">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jia">+</a>
-		 </div>        
-         </li>
-         <li class="title_width4">￥545</li>
-         <li class="title_width5"><a href="#">删除</a></li>
-         </ul>
-         <ul class="product_cart">
-         <li class="title_width"><input type="checkbox" id="rememberMe"></li>
-         <li class="title_width1">
-         <a href="#" class="product_img left"><img src="__PUBLIC__/images/product_img_17.png" /></a>
-         <p class="cart_content">
-         <a href="#" class="title_name">浦江特产绿豌豆天然无污染</a>
-         <span> 礼盒装：20个装</span>
-         </p>
-         </li>
-         <li class="title_width2">￥23</li>
-         <li class="title_width3">
-           <div class="Numbers">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jian">-</a>
-		  <input id="number" name="number" type="text" value="1" class="number_text">
-		  <a href="javascript:void(0);" onclick="updatenum('del');" class="jia">+</a>
-		 </div>        
-         </li>
-         <li class="title_width4">￥545</li>
-         <li class="title_width5"><a href="#">删除</a></li>
-         </ul>
-       </div>
-     </div>
      <!--操作-->
      <div class="cart_operating clearfix">
         <div class="cart_operating_style">
@@ -150,4 +88,16 @@
 ?>
 </body>
 </html>
-footer_info
+<script>
+         $(document).click(".jia",function(){
+             var number = $("#number").val();
+                     if(number>=100)
+                   {
+                         $("#number").val(number);
+                   }else{
+                      number = parseInt(number)+1;
+                      $("#number").val(number);
+                     //alert(number)
+                   }
+         })
+</script>

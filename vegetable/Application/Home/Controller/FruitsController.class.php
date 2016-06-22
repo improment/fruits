@@ -7,7 +7,7 @@ class FruitsController extends Controller {
     {
         header("content-type:text/html;charset=utf8");
         $shop = M("Shop");
-        $arr = $shop->select();
+        $arr = $shop->limit(12)->select();
         //print_r($arr);die;
         foreach ($arr as $k => $v) {
             $arr[$k]['simg']=explode('|',$v['simg']);
