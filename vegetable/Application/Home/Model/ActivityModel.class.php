@@ -19,4 +19,7 @@ class ActivityModel extends Model {
 	public function two_sel($order,$values,$limit){
 		return $this->Table('activity')->join('shop ON activity.sid = shop.sid' )->order("$order")->where("$values")->limit($limit)->select();
 	}
+	public function three_sel($order,$values,$limit){
+		return $this->Table('activity')->join('shop ON activity.sid = shop.sid' )->order("$order")->where("$values")->limit($limit)->select();
+	}
 }

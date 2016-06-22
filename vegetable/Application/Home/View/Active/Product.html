@@ -54,38 +54,15 @@ body{margin:20px;}
    <div class="ranking">
     <div class="ranking_title"><span>销量</span>排行</div>
     <ul class="ranking_list">
+	 <foreach name="are" item="v" key="k" >
      <li class="">
-     <em class="ranking_label">1</em>
-     <a href="#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
+     <em class="ranking_label">{$k+1}</em>
+     <a href="#" class="img"> <img src="../../../../../CI/public/uploads/<?php $info=explode('|',$v['simg']); echo $info[2]?>" width="100px" height="100px" /></a>
+     <p class="ranking_name">{$v.sname}</p>
+     <p class="price"><b>￥</b>{$v.a_price}</p>
+     <p><a href="__APP__/home/active/product/id/{$v.aid}">立即查看< </a></p>
      </li>
-     <li class="">
-     <em class="ranking_label">2</em>
-     <a href="#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li><li class="">
-     <em class="ranking_label">3</em>
-     <a href="#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li><li class="">
-     <em class="ranking_label">4</em>
-     <a href="#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li><li class="">
-     <em class="ranking_label">5</em>
-     <a href="#" class="img"> <img src="__PUBLIC__/images/product_img_17.png" width="100px" height="100px" /></a>
-     <p class="ranking_name">浦江特产绿豌豆天然无污染</p>
-     <p class="price"><b>￥</b>12.54</p>
-     <p><a href="#">立即查看< </a></p>
-     </li>
+	 </foreach>
     </ul>
    </div>
  </div>
@@ -165,7 +142,7 @@ with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createEle
 		
       <div class="product_name"><h2 id="sname" data-id="{$sid}">{$sname}</h2><span>{$sdesc}</span></div>
       <div class="product_price">
-       <div class="price"><label>优惠价：</label>￥<span id="price">{$a_price}</span> <b class="unit">{$unit}</b></br><label>原&nbsp;&nbsp;&nbsp;价：</label><s>￥</s><s class="yuanjia">{$sprice}</s></div>
+       <div class="price"><label>商城价：</label>￥<span id="price">{$a_price}</span> <b class="unit">{$unit}</b></br><label></label><s class="yuanjia" style="display:none">{$sprice}</s></div>
 	   
        <!-- <div class="jyScore-fra"><span><em style="width:60px;"></em></span><b>4.5</b><a href="#">共有16条评论</a></div> -->
       </div>

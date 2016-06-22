@@ -27,8 +27,11 @@ class ActiveController extends Controller {
 		//print_r($ar);die;
 		unset($ar[count($ar)-1]);
 		$arr['simg']=implode('|',$ar);
+		$are=$activity->two_sel("sbuy desc","status=1",6);
+		//print_r($arr);die;
+		$this->assign('are',$are);
+		//print_r($are);die;
 		$this->assign($arr);
-		
 		$this->display('Product');
 		
 	}

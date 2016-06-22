@@ -12,10 +12,10 @@ class UserController extends Controller {
 		}
 		$users=$Model->query("select * from user where uid='$u_id'");
 		$this->assign($users[0]);
-		$this->display('user_info');
+		
 		//print_r($arr);die;
 		$this->assign('list',$arr);
-        $this->display('user');
+		$this->display('user');
     }
 	//收货地址
 	public function address(){
